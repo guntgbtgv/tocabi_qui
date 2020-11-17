@@ -1,2 +1,3 @@
 # tocabi_qui
-based on the code written by saga0619
+based on the code https://github.com/saga0619/tocabi_qui
+ 
