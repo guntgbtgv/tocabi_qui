@@ -1,6 +1,4 @@
 
 ```sh
-sudo apt-get install qml-module-qtmultimedia
-sudo apt install gstreamer1.0-libav ubuntu-restricted-extras
-sudo apt-get install qml-module-qtquick*
+based on https://github.com/saga0619/tocabi_qui
 ```
