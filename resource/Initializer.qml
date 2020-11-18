@@ -17,7 +17,7 @@ Page {
         font.pointSize: 20
 
         onClicked: {
-            ros.initializebtncb()
+            ros.button_ros(0,"ecatinit")
         }
     }
 
@@ -108,7 +108,7 @@ Page {
         checked: false
 
         onClicked: {
-            ros.disablelower()
+            ros.button_ros(0,"disablelower")
         }
     }
 }

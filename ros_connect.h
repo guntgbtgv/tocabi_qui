@@ -49,22 +49,6 @@ public:
     Q_INVOKABLE void virjoy(float x, float y, int i);
     Q_INVOKABLE void button_ros(int id, QString msg);
     Q_INVOKABLE void switch_ros(int id, char *msg);
-    Q_INVOKABLE void initializebtncb();
-    Q_INVOKABLE void safetyresetbtncb();
-    Q_INVOKABLE void safety2btncb();
-    Q_INVOKABLE void disablelower();
-    Q_INVOKABLE void inityaw();
-    Q_INVOKABLE void enablelpf();
-    Q_INVOKABLE void stateestimationcb();
-    Q_INVOKABLE void sebyft();
-    Q_INVOKABLE void simvj();
-    Q_INVOKABLE void igimubtn();
-    Q_INVOKABLE void gravcompcb();
-    Q_INVOKABLE void posconcb();
-    Q_INVOKABLE void posgravconcb();
-    Q_INVOKABLE void torquerediscb();
-    Q_INVOKABLE void printdata();
-    Q_INVOKABLE void dshowbtn();
     Q_INVOKABLE void tasksendcb();
 
 
