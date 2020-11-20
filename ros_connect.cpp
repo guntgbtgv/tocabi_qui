@@ -29,14 +29,25 @@ ros_connect::ros_connect(QObject *parent, ros::NodeHandle &nh) : QObject(parent)
 
         char buf[128];
         char buf2[128];
+
         std::sprintf(buf, "%6.2f", 15.48721241);
         std::sprintf(buf2, "t%d", 1);
+
         m_Q->findChild<QObject *>(buf2)->setProperty("text", buf);
 
+        //How to Get Property from Qobject
+        // QVariant Qvar = m_Q->findChild<QObject *>(buf2)->property("text");
+        // QString Qstr = Qvar.toString();
+        std::string stdstr_ = m_Q->findChild<QObject *>(buf2)->property("text").toString().toStdString();
 
-        QString tt_ = m_Q->findChild<QObject *>(buf2)->property("text");
-        std::cout<<"Get text : "<< tt_.toStdString()<<std::endl;
-        
+        std::cout<< "get text? : "<< stdstr_ <<std::endl;
+
+
+        task_msg.l_x = m_Q->findChild<QObject *>("text_l_x")->property("text").toString().toDouble();
+        double dd_ = task_msg.l_x;
+
+        std::cout<< "text_l_x :" << dd_ << std::endl;;
+
     }
 
 void ros_connect::click_ros(QString msg)
@@ -564,54 +575,56 @@ void ros_connect::EmergencyOff()
 
 void ros_connect::handletaskmsg()
     {
-        /*
-        task_msg.pelv_pitch =    ui_.pelv_pitch-> text().toFloat();
-        task_msg.roll = ui_.com_roll->text().toFloat();
-        task_msg.pitch = ui_.com_pitch->text().toFloat();
-        task_msg.yaw = ui_.com_yaw->text().toFloat();
-        task_msg.ratio = ui_.com_pos->text().toFloat();
-        task_msg.height = ui_.com_height->text().toFloat();
+        
+        task_msg.pelv_pitch =  m_Q->findChild<QObject *>("pelv_pitch")->property("text").toString().toDouble();
+        task_msg.roll = m_Q->findChild<QObject *>("com_roll")->property("text").toString().toDouble();
+        task_msg.pitch = m_Q->findChild<QObject *>("com_pitch")->property("text").toString().toDouble();
+        task_msg.yaw = m_Q->findChild<QObject *>("com_yaw")->property("text").toString().toDouble();
+        task_msg.ratio = m_Q->findChild<QObject *>("com_pos")->property("text").toString().toDouble();
+        task_msg.height = m_Q->findChild<QObject *>("com_height")->property("text").toString().toDouble();
+        
+        // // // task_msg.left_foot = ui_.cb_lf->isChecked();
+        // // // task_msg.right_foot = ui_.cb_rf->isChecked();
+        // // // task_msg.left_hand = ui_.cb_lh->isChecked();
+        // // // task_msg.right_hand = ui_.cb_rh->isChecked();
 
-        task_msg.left_foot = ui_.cb_lf->isChecked();
-        task_msg.right_foot = ui_.cb_rf->isChecked();
-        task_msg.left_hand = ui_.cb_lh->isChecked();
-        task_msg.right_hand = ui_.cb_rh->isChecked();
 
-        task_msg.l_x =        m_Q->children().fromSet() ->setProperty("text", buf);
-    ui_.text_l_x->text().toFloat();
-        task_msg.l_y = ui_.text_l_y->text().toFloat();
-        task_msg.l_z = ui_.text_l_z->text().toFloat();
-        task_msg.l_roll = ui_.text_l_roll->text().toFloat();
-        task_msg.l_pitch = ui_.text_l_pitch->text().toFloat();
-        task_msg.l_yaw = ui_.text_l_yaw->text().toFloat();
 
-        task_msg.r_x = ui_.text_r_x->text().toFloat();
-        task_msg.r_y = ui_.text_r_y->text().toFloat();
-        task_msg.r_z = ui_.text_r_z->text().toFloat();
-        task_msg.r_roll = ui_.text_r_roll->text().toFloat();
-        task_msg.r_pitch = ui_.text_r_pitch->text().toFloat();
-        task_msg.r_yaw = ui_.text_r_yaw->text().toFloat();
 
-        task_msg.time = ui_.text_traj_time->text().toFloat();
-        task_msg.mode = ui_.task_mode->currentIndex();
+        task_msg.l_x = m_Q->findChild<QObject *>("text_l_x")->property("text").toString().toDouble();
+        task_msg.l_y = m_Q->findChild<QObject *>("text_l_y")->property("text").toString().toDouble();
+        task_msg.l_z = m_Q->findChild<QObject *>("text_l_z")->property("text").toString().toDouble();
+        task_msg.l_roll = m_Q->findChild<QObject *>("text_l_roll")->property("text").toString().toDouble();
+        task_msg.l_pitch = m_Q->findChild<QObject *>("text_l_pitch")->property("text").toString().toDouble();
+        task_msg.l_yaw = m_Q->findChild<QObject *>("text_l_yaw")->property("text").toString().toDouble();
 
-        task_msg.customTaskGain = ui_.customtaskgain->isChecked();
+        task_msg.r_x = m_Q->findChild<QObject *>("text_r_x")->property("text").toString().toDouble();
+        task_msg.r_y = m_Q->findChild<QObject *>("text_r_y")->property("text").toString().toDouble();
+        task_msg.r_z = m_Q->findChild<QObject *>("text_r_z")->property("text").toString().toDouble();
+        task_msg.r_roll = m_Q->findChild<QObject *>("text_r_roll")->property("text").toString().toDouble();
+        task_msg.r_pitch = m_Q->findChild<QObject *>("text_r_pitch")->property("text").toString().toDouble();
+        task_msg.r_yaw = m_Q->findChild<QObject *>("text_r_yaw")->property("text").toString().toDouble();
 
-        task_msg.solver = ui_.solver_mode->currentIndex();
+        // // task_msg.time = m_Q->findChild<QObject *>("text_traj_time")->property("text").toString().toDouble();
+        // // task_msg.mode = ui_.task_mode->currentIndex();
 
-        task_msg.contactredis = ui_.cr_mode->currentIndex();
+        // task_msg.customTaskGain =  m_Q->findChild<QObject *>("customtaskgain")->property("")isChecked();
 
-        task_msg.acc_p = ui_.accgain->text().toFloat();
+        // // // task_msg.solver = ui_.solver_mode->currentIndex();
 
-        task_msg.maintain_lc = ui_.checkBox->isChecked();
+        // // // task_msg.contactredis = ui_.cr_mode->currentIndex();
+
+        // task_msg.acc_p = m_Q->findChild<QObject *>("accgain")->property("text").toString().toDouble();
+
+        // // // task_msg.maintain_lc = ui_.checkBox->isChecked();
 
         if (task_msg.customTaskGain)
         {
-            task_msg.pos_p = ui_.pospgain->text().toFloat();
-            task_msg.pos_d = ui_.posdgain->text().toFloat();
-            task_msg.ang_p = ui_.angpgain->text().toFloat();
-            task_msg.ang_d = ui_.angdgain->text().toFloat();
-        }*/
+            task_msg.pos_p = m_Q->findChild<QObject *>("pospgain")->property("text").toString().toDouble();
+            task_msg.pos_d = m_Q->findChild<QObject *>("posdgain")->property("text").toString().toDouble();
+            task_msg.ang_p = m_Q->findChild<QObject *>("angpgain")->property("text").toString().toDouble();
+            task_msg.ang_d = m_Q->findChild<QObject *>("angdgain")->property("text").toString().toDouble();
+        }
     }
 
 void ros_connect::VelocityHandle(const sensor_msgs::Joy::ConstPtr& msg)

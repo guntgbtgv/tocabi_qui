@@ -8,6 +8,7 @@
 #include <QString>
 #include <QPoint>
 #include <QDebug>
+#include <QVariant>
 #include <sstream>
 #include <sensor_msgs/Joy.h>
 #include <std_msgs/String.h>

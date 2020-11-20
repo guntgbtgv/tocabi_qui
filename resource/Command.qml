@@ -95,73 +95,79 @@ Page {
 
 
                 TextField {
-                    id: l_arm_x
+                    id: text_l_x
                     height: 15
                     width: 40
                     font.pixelSize: 12
+                    text: qsTr("3.5")
                     horizontalAlignment: TextInput.AlignHCenter
                     topPadding: 0
                     bottomPadding: 0
-                    objectName: "l_arm_x"
+                    objectName: "text_l_x"
                 }
                 TextField {
-                    id: l_arm_y
+                    id: text_l_y
                     height: 15
                     width: 40
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
+                    text: qsTr("3.5")
                     topPadding: 0
                     bottomPadding: 0
-                    objectName: "l_arm_y"
+                    objectName: "text_l_y"
 
                 }
 
                 TextField {
-                    id:l_arm_z
+                    id:text_l_z
 
+                    text: qsTr("3.5")
                     height: 15
                     width: 40
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
                     topPadding: 0
                     bottomPadding: 0
-                    objectName: "l_arm_z"
-
-                }
-                TextField {
-                    id:l_arm_roll
-
-                    height: 15
-                    width: 40
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "l_arm_roll"
+                    objectName: "text_l_z"
 
                 }
                 TextField {
-                    id:l_arm_pitch
+                    id:text_l_roll
 
                     height: 15
+                    text: qsTr("3.5")
                     width: 40
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
                     topPadding: 0
                     bottomPadding: 0
-                    objectName: "l_arm_pitch"
+                    objectName: "text_l_roll"
 
                 }
                 TextField {
-                    id:l_arm_yaw
+                    id:text_l_pitch
 
                     height: 15
+                    text: qsTr("3.5")
                     width: 40
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
                     topPadding: 0
                     bottomPadding: 0
-                    objectName: "l_arm_yaw"
+                    objectName: "text_l_pitch"
+
+                }
+                TextField {
+                    id:text_l_yaw
+
+                    height: 15
+                    width: 40
+                    text: qsTr("3.5")
+                    font.pixelSize: 12
+                    horizontalAlignment: TextInput.AlignHCenter
+                    topPadding: 0
+                    bottomPadding: 0
+                    objectName: "text_l_yaw"
 
                 }
 
@@ -172,6 +178,7 @@ Page {
             Column{
                 spacing: 10
                 id: cl4
+                anchors.bottom: cl3.bottom
 
                 Text {
                     text: qsTr("x")
@@ -208,78 +215,86 @@ Page {
 
             Column{
                 spacing: 10
-                anchors.bottom: cl4.bottom
+                anchors.bottom: cl3.bottom
 
+                Text {
 
-
-                TextField {
-                    id: r_arm_x
-                    height: 15
-                    width: 40
+                    text: qsTr("Right Arm")
                     font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "r_arm_x"
-                }
-                TextField {
-                    id: r_arm_y
-                    height: 15
-                    width: 40
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "r_arm_y"
-
                 }
 
-                TextField {
-                    id:r_arm_z
 
+
+                TextField {
+                    id: text_r_x
                     height: 15
                     width: 40
                     font.pixelSize: 12
+                    text: qsTr("3.5")
                     horizontalAlignment: TextInput.AlignHCenter
                     topPadding: 0
                     bottomPadding: 0
-                    objectName: "r_arm_z"
-
+                    objectName: "text_r_x"
                 }
                 TextField {
-                    id:r_arm_roll
-
+                    id: text_r_y
                     height: 15
                     width: 40
+                    text: qsTr("3.5")
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
                     topPadding: 0
                     bottomPadding: 0
-                    text: qsTr("r_arm_roll")
+                    objectName: "text_r_y"
+
+                }
+
+                TextField {
+                    id:text_r_z
+                    height: 15
+                    width: 40
+                    text: qsTr("3.5")
+                    font.pixelSize: 12
+                    horizontalAlignment: TextInput.AlignHCenter
+                    topPadding: 0
+                    bottomPadding: 0
+                    objectName: "text_r_z"
 
                 }
                 TextField {
-                    id:r_arm_pitch
-
+                    id:text_r_roll
                     height: 15
                     width: 40
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
+                    text: qsTr("3.5")
                     topPadding: 0
                     bottomPadding: 0
-                    objectName: "r_arm_pitch"
+                    objectName: "text_r_roll"
 
                 }
                 TextField {
-                    id:r_arm_yaw
-
+                    id:text_r_pitch
                     height: 15
                     width: 40
+                    font.pixelSize: 12
+                    text: qsTr("3.5")
+                    horizontalAlignment: TextInput.AlignHCenter
+                    topPadding: 0
+                    bottomPadding: 0
+                    objectName: "text_r_pitch"
+
+                }
+                TextField {
+                    id:text_r_yaw
+                    height: 15
+                    width: 40
+                    text: qsTr("3.5")
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
                     topPadding: 0
                     bottomPadding: 0
-                    objectName: "r_arm_yaw"
+                    objectName: "text_r_yaw"
 
                 }
 
@@ -304,37 +319,31 @@ Page {
 
                 Text {
                     text: qsTr("COM pos")
-                    objectName: "COM_pos"
                     font.pixelSize: 12
 
                 }
                 Text {
                     text: qsTr("Height")
-                    objectName: "Height"
                     font.pixelSize: 12
 
                 }
                 Text {
                     text: qsTr("pelv pitch")
-                    objectName: "pelv_pitch"
                     font.pixelSize: 12
 
                 }
                 Text {
                     text: qsTr("roll")
-                    objectName: "roll"
                     font.pixelSize: 12
 
                 }
                 Text {
                     text: qsTr("pitch")
-                    objectName: "pitch"
                     font.pixelSize: 12
 
                 }
                 Text {
                     text: qsTr("yaw")
-                    objectName: "yaw"
                     font.pixelSize: 12
                 }
             }
@@ -346,7 +355,8 @@ Page {
                 TextField {
                     height: 15
                     width: 40
-
+                    objectName: "com_pos"
+                    text: qsTr("3.5")
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
                     topPadding: 0
@@ -356,7 +366,9 @@ Page {
                 TextField {
                     height: 15
                     width: 40
+                    objectName: "com_height"
 
+                    text: qsTr("3.5")
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
                     topPadding: 0
@@ -366,6 +378,8 @@ Page {
                 TextField {
                     height: 15
                     width: 40
+                    objectName: "pelv_pitch"
+                    text: qsTr("3.5")
 
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
@@ -375,7 +389,9 @@ Page {
                 TextField {
                     height: 15
                     width: 40
+                    objectName: "com_roll"
 
+                    text: qsTr("3.5")
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
                     topPadding: 0
@@ -384,7 +400,9 @@ Page {
                 TextField {
                     height: 15
                     width: 40
+                    objectName: "com_pitch"
 
+                    text: qsTr("3.5")
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
                     topPadding: 0
@@ -393,7 +411,9 @@ Page {
                 TextField {
                     height: 15
                     width: 40
+                    objectName: "com_yaw"
 
+                    text: qsTr("3.5")
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
                     topPadding: 0
@@ -446,8 +466,9 @@ Page {
             anchors.right: parent.right
 
             CheckBox {
-                id: checkBox
+                id: customtaskgain
                 text: qsTr("Custom Task gain")
+                objectName: "customtaskgain"
                 font.pixelSize: 12
                 padding: 0
             }
@@ -495,6 +516,8 @@ Page {
                         horizontalAlignment: TextInput.AlignHCenter
                         topPadding: 0
                         bottomPadding: 0
+                        text: qsTr("3.5")
+                        objectName: "pospgain"
                     }
                     TextField {
                         height: 15
@@ -503,6 +526,9 @@ Page {
                         horizontalAlignment: TextInput.AlignHCenter
                         topPadding: 0
                         bottomPadding: 0
+                        text: qsTr("3.5")
+                        objectName: "posdgain"
+
                     }
                     TextField {
                         height: 15
@@ -511,6 +537,9 @@ Page {
                         horizontalAlignment: TextInput.AlignHCenter
                         topPadding: 0
                         bottomPadding: 0
+                        text: qsTr("3.5")
+                        objectName: "angpgain"
+
                     }
                     TextField {
                         height: 15
@@ -519,6 +548,9 @@ Page {
                         horizontalAlignment: TextInput.AlignHCenter
                         topPadding: 0
                         bottomPadding: 0
+                        text: qsTr("3.5")
+                        objectName: "angdgain"
+
                     }
                     TextField {
                         height: 15
@@ -527,6 +559,9 @@ Page {
                         horizontalAlignment: TextInput.AlignHCenter
                         topPadding: 0
                         bottomPadding: 0
+                        text: qsTr("3.5")
+                         objectName: "accgain"
+
                     }
                 }
             }
@@ -655,6 +690,8 @@ Page {
                 TextField {
                     height: 15
                     width: 120
+                    text: qsTr("3.5")
+                    objectName: "text_traj_time"
 
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
@@ -689,6 +726,8 @@ Page {
                 id: button
                 width: 200
                 text: qsTr("SEND")
+                font.pixelSize: 20
+                onClicked: ros.tasksendcb()
             }
         }
 
@@ -749,7 +788,7 @@ Page {
                 font.pixelSize: 12
                 text: qsTr("Init Yaw")
                 onClicked: {
-                    ros.inityaw()
+                    ros.button_ros(0,"inityaw")
                 }
 
             }
@@ -759,8 +798,7 @@ Page {
                 height: 30
                 font.pixelSize: 12
                 onClicked: {
-                    ros.enablelpf()
-                }
+                    ros.button_ros(0,"enablelpf")                        }
             }
             Button {
                 text: qsTr("State Estimation")
@@ -768,7 +806,7 @@ Page {
                 height: 30
                 font.pixelSize: 12
                 onClicked: {
-                    ros.stateestimationcb()
+                    ros.button_ros(0,"stateestimation")
                 }
             }
             Button {
@@ -777,7 +815,7 @@ Page {
                 height: 30
                 font.pixelSize: 12
                 onClicked: {
-                    ros.sebyft()
+                    ros.button_ros(0,"sebyft")
                 }
             }
             Button {
@@ -786,7 +824,7 @@ Page {
                 height: 30
                 font.pixelSize: 12
                 onClicked: {
-                    ros.simvj()
+                    ros.button_ros(0,"simvirtualjoint")
                 }
             }
             Button {
@@ -795,7 +833,7 @@ Page {
                 height: 30
                 font.pixelSize: 12
                 onClicked: {
-                    ros.igimubtn()
+                    ros.button_ros(0,"imuignore")
                 }
             }
 
@@ -811,7 +849,7 @@ Page {
                 height: 30
                 font.pixelSize: 12
                 onClicked: {
-                    ros.gravcompcb()
+                    ros.button_ros(0,"gravity")
                 }
             }
             Button {
@@ -820,7 +858,7 @@ Page {
                 height: 30
                 font.pixelSize: 12
                 onClicked: {
-                    ros.posconcb()
+                    ros.button_ros(0,"positioncontrol")
                 }
             }
             Button {
@@ -829,7 +867,7 @@ Page {
                 height: 30
                 font.pixelSize: 12
                 onClicked: {
-                    ros.posgravconcb()
+                    ros.button_ros(0,"positiongravcontrol")
                 }
             }
             Button {
@@ -838,7 +876,7 @@ Page {
                 height: 30
                 font.pixelSize: 12
                 onClicked: {
-                    ros.torquerediscb()
+                    ros.button_ros(0,"torqueredis")
                 }
             }
 
@@ -862,7 +900,7 @@ Page {
                 height: 30
                 font.pixelSize: 12
                 onClicked: {
-                    ros.printdata()
+                    ros.button_ros(0,"printdata")
                 }
             }
             Button {
@@ -871,7 +909,7 @@ Page {
                 height: 30
                 font.pixelSize: 12
                 onClicked: {
-                    ros.dshowbtn()
+                    ros.button_ros(0,"showdata")
                 }
             }
 
