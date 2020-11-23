@@ -27,7 +27,6 @@ int main(int argc, char *argv[])
     ros_connect ros(root,nh);
 
     engine.rootContext()->setContextProperty("ros", &ros);
-    //engine.rootContext()->
 
     if (engine.rootObjects().isEmpty())
         return -1;

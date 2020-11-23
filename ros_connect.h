@@ -37,6 +37,12 @@
 #define min(x, y) (((x) < (y)) ? (x) : (y))
 #define max(x, y) (((x) > (y)) ? (x) : (y))
 
+struct task_que
+{
+    std::string task_title;
+    tocabi_controller::TaskCommand tc_;
+};
+
 class ros_connect : public QObject
 {
     Q_OBJECT
@@ -51,8 +57,12 @@ public:
     Q_INVOKABLE void button_ros(int id, QString msg);
     Q_INVOKABLE void switch_ros(int id, char *msg);
     Q_INVOKABLE void tasksendcb();
-
-
+    Q_INVOKABLE void walkinginitbtncb();
+    Q_INVOKABLE void walkingstartbtncb();
+    Q_INVOKABLE void que_deletebtn();
+    Q_INVOKABLE void que_resetbtn();
+    Q_INVOKABLE void que_sendbtn();
+    Q_INVOKABLE void que_addquebtn();
     Q_INVOKABLE void update();
     Q_INVOKABLE double t_x();
     Q_INVOKABLE int tt;
@@ -100,6 +110,9 @@ public:
     ros::Publisher task_pub;
     tocabi_controller::TaskCommand task_msg;
 
+    ros::Publisher task_que_pub;
+    tocabi_controller::TaskCommandQue task_que_msg;
+
     ros::Publisher velcommand_pub;
     tocabi_controller::VelocityCommand velcmd_msg;
 
@@ -108,6 +121,9 @@ public:
     int JoyFlag = 0;
     int LTFlag = 0;
     int RTFlag = 0;
+
+    std::vector<task_que> tq_;
+
 
     float pp(float val);
 

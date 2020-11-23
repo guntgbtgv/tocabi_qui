@@ -731,6 +731,7 @@ Page {
             }
         }
 
+
         Row {
             anchors.left: parent.left
             anchors.bottom: parent.bottom
@@ -744,6 +745,7 @@ Page {
             }
 
             TextField {
+                id: queName
                 height: 15
                 font.pixelSize: 12
                 horizontalAlignment: TextInput.AlignHCenter
@@ -753,7 +755,9 @@ Page {
 
             Button {
                 height: 30
-                text: qsTr("Add que")
+                text: qsTr("Add Que")
+                font.pixelSize: 12
+                onClicked: mymodel.append({"task_num": mymodel.count, "name": queName.text}) + ros.que_addquebtn()
             }
         }
     }
@@ -986,6 +990,7 @@ Page {
                     height: 15
 
                     text: qsTr("Text Field")
+                    objectName: "text_walking_x"
                     font.pixelSize: 12
                     topPadding: 0
                     bottomPadding: 0
@@ -993,7 +998,16 @@ Page {
                 TextField {
                     width: 60
                     height: 15
-
+                    text: qsTr("Text Field")
+                    objectName: "text_walking_y"
+                    font.pixelSize: 12
+                    topPadding: 0
+                    bottomPadding: 0
+                }
+                TextField {
+                    width: 60
+                    height: 15
+                    objectName: "text_walking_z"
                     text: qsTr("Text Field")
                     font.pixelSize: 12
                     topPadding: 0
@@ -1002,7 +1016,7 @@ Page {
                 TextField {
                     width: 60
                     height: 15
-
+                    objectName: "text_walking_height"
                     text: qsTr("Text Field")
                     font.pixelSize: 12
                     topPadding: 0
@@ -1011,16 +1025,7 @@ Page {
                 TextField {
                     width: 60
                     height: 15
-
-                    text: qsTr("Text Field")
-                    font.pixelSize: 12
-                    topPadding: 0
-                    bottomPadding: 0
-                }
-                TextField {
-                    width: 60
-                    height: 15
-
+                    objectName: "text_walking_theta"
                     text: qsTr("Text Field")
                     font.pixelSize: 12
                     topPadding: 0
@@ -1061,7 +1066,8 @@ Page {
                 TextField {
                     width: 60
                     height: 15
-                    text: qsTr("Text Field")
+                    text: qsTr("0.0")
+                    objectName: "text_walking_steplengthx"
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
                     topPadding: 0
@@ -1072,6 +1078,7 @@ Page {
                     width: 60
                     height: 15
                     text: qsTr("Text Field")
+                    objectName: "text_walking_steplengthy"
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
                     topPadding: 0
@@ -1175,11 +1182,13 @@ Page {
             Button {
                 width: 160
                 text: qsTr("walking init")
+                onClicked: ros.walkinginitbtncb()
             }
 
             Button {
                 width: 160
                 text: qsTr("walking start")
+                onClicked: ros.walkingstartbtncb()
             }
         }
     }
@@ -1201,16 +1210,19 @@ Page {
             y: 49
             anchors.fill: parent
 
-            model: Qt.fontFamilies()
 
             delegate: ItemDelegate {
-                text: modelData
+
+                text: qsTr("task " + task_num + " :" + name )
                 width: parent.width
-                highlighted: ListView.isCurrentItem
+                highlighted:  ListView.isCurrentItem
                 onClicked: listView.currentIndex = index
+
             }
 
+            model: ListModel{ id: mymodel }
             ScrollIndicator.vertical: ScrollIndicator { }
+            clip: true
         }
     }
 
@@ -1218,7 +1230,6 @@ Page {
         anchors.top: frame4.bottom
         anchors.topMargin: 10
         anchors.left: frame4.left
-
         spacing: 5
 
         Button {
@@ -1226,20 +1237,25 @@ Page {
             height: 48
             text: qsTr("delete")
             font.pixelSize: 12
+            onClicked: mymodel.remove(listView.currentIndex)
         }
+
         Button {
             width: 65
             height: 48
             text: qsTr("reset")
             font.pixelSize: 12
+            onClicked: mymodel.clear() + ros.que_resetbtn()
         }
+
         Button {
             width: 65
             height: 48
             text: qsTr("Send")
             font.pixelSize: 12
-        }
+            onClicked: ros.que_sendbtn()
 
+        }
     }
 
 

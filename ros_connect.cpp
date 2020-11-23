@@ -22,6 +22,8 @@ ros_connect::ros_connect(QObject *parent, ros::NodeHandle &nh) : QObject(parent)
 
         com_pub = nh.advertise<std_msgs::String>("/tocabi/command", 100);
         task_pub = nh.advertise<tocabi_controller::TaskCommand>("/tocabi/taskcommand", 100);
+        task_que_pub = nh.advertise<tocabi_controller::TaskCommandQue>("/tocabi/taskquecommand", 100);
+
         velcommand_pub = nh.advertise<tocabi_controller::VelocityCommand>("/tocabi/velcommand", 100);
 
         android_pub = nh.advertise<tocabi_controller::TaskCommand>("/tocabi/taskcommand", 100);
@@ -38,15 +40,17 @@ ros_connect::ros_connect(QObject *parent, ros::NodeHandle &nh) : QObject(parent)
         //How to Get Property from Qobject
         // QVariant Qvar = m_Q->findChild<QObject *>(buf2)->property("text");
         // QString Qstr = Qvar.toString();
-        std::string stdstr_ = m_Q->findChild<QObject *>(buf2)->property("text").toString().toStdString();
-
-        std::cout<< "get text? : "<< stdstr_ <<std::endl;
 
 
-        task_msg.l_x = m_Q->findChild<QObject *>("text_l_x")->property("text").toString().toDouble();
-        double dd_ = task_msg.l_x;
+        // std::string stdstr_ = m_Q->findChild<QObject *>(buf2)->property("text").toString().toStdString();
 
-        std::cout<< "text_l_x :" << dd_ << std::endl;;
+        // std::cout<< "get text? : "<< stdstr_ <<std::endl;
+
+
+        // task_msg.l_x = m_Q->findChild<QObject *>("text_l_x")->property("text").toString().toDouble();
+        // double dd_ = task_msg.l_x;
+
+        // std::cout<< "text_l_x :" << dd_ << std::endl;;
 
     }
 
@@ -73,19 +77,21 @@ void ros_connect::tasksendcb()
 
         task_pub.publish(task_msg);
 
-        // ui_.text_l_x->setText(QString::number(0.0, 'f', 1));
-        // ui_.text_l_y->setText(QString::number(0.0, 'f', 1));
-        // ui_.text_l_z->setText(QString::number(0.0, 'f', 1));
-        // ui_.text_l_roll->setText(QString::number(0.0, 'f', 1));
-        // ui_.text_l_pitch->setText(QString::number(0.0, 'f', 1));
-        // ui_.text_l_yaw->setText(QString::number(0.0, 'f', 1));
+        m_Q->findChild<QObject *>("text_l_x")->setProperty("text",0.0);
+        m_Q->findChild<QObject *>("text_l_y")->setProperty("text",0.0);
+        m_Q->findChild<QObject *>("text_l_z")->setProperty("text",0.0);
+        m_Q->findChild<QObject *>("text_l_roll")->setProperty("text",0.0);
+        m_Q->findChild<QObject *>("text_l_pitch")->setProperty("text",0.0);
+        m_Q->findChild<QObject *>("text_l_yaw")->setProperty("text",0.0);
 
-        // ui_.text_r_x->setText(QString::number(0.0, 'f', 1));
-        // ui_.text_r_y->setText(QString::number(0.0, 'f', 1));
-        // ui_.text_r_z->setText(QString::number(0.0, 'f', 1));
-        // ui_.text_r_roll->setText(QString::number(0.0, 'f', 1));
-        // ui_.text_r_pitch->setText(QString::number(0.0, 'f', 1));
-        // ui_.text_r_yaw->setText(QString::number(0.0, 'f', 1));
+        m_Q->findChild<QObject *>("text_r_x")->setProperty("text",0.0);
+        m_Q->findChild<QObject *>("text_r_y")->setProperty("text",0.0);
+        m_Q->findChild<QObject *>("text_r_z")->setProperty("text",0.0);
+        m_Q->findChild<QObject *>("text_r_roll")->setProperty("text",0.0);
+        m_Q->findChild<QObject *>("text_r_pitch")->setProperty("text",0.0);
+        m_Q->findChild<QObject *>("text_r_yaw")->setProperty("text",0.0);
+
+
     }
 
 void ros_connect::vir_TaskHandle()
@@ -605,7 +611,7 @@ void ros_connect::handletaskmsg()
         task_msg.r_pitch = m_Q->findChild<QObject *>("text_r_pitch")->property("text").toString().toDouble();
         task_msg.r_yaw = m_Q->findChild<QObject *>("text_r_yaw")->property("text").toString().toDouble();
 
-        // // task_msg.time = m_Q->findChild<QObject *>("text_traj_time")->property("text").toString().toDouble();
+        task_msg.time = m_Q->findChild<QObject *>("text_traj_time")->property("text").toString().toDouble();
         // // task_msg.mode = ui_.task_mode->currentIndex();
 
         // task_msg.customTaskGain =  m_Q->findChild<QObject *>("customtaskgain")->property("")isChecked();
@@ -614,7 +620,7 @@ void ros_connect::handletaskmsg()
 
         // // // task_msg.contactredis = ui_.cr_mode->currentIndex();
 
-        // task_msg.acc_p = m_Q->findChild<QObject *>("accgain")->property("text").toString().toDouble();
+        task_msg.acc_p = m_Q->findChild<QObject *>("accgain")->property("text").toString().toDouble();
 
         // // // task_msg.maintain_lc = ui_.checkBox->isChecked();
 
@@ -723,6 +729,195 @@ void ros_connect::ChangeConMode(int data)
     m_Q->findChild<QObject *>("mode")->setProperty("text", buf);
     velcmd_msg.task_link = change_mode[mode_index];
 }
+
+void ros_connect::walkinginitbtncb()
+    {
+        task_msg.walking_enable = 3.0;
+        // task_msg.ik_mode = ui_.ik_mode->currentIndex();
+
+        // if (ui_.walking_pattern->currentIndex() == 0)
+        // {
+        //     task_msg.pattern = 0;
+        // }
+        // else if (ui_.walking_pattern->currentIndex() == 1)
+        // {
+        //     task_msg.pattern = 1;
+        // }
+        // else
+        // {
+        //     task_msg.pattern = 2;
+        // }
+
+        // if (ui_.controlmode->currentIndex() == 0)
+        // {
+        //     task_msg.comcontrol = 0;
+        // }
+        // else if (ui_.controlmode->currentIndex() == 1)
+        // {
+        //     task_msg.comcontrol = 1;
+        // }
+        // else
+        // {
+        //     task_msg.comcontrol = 2;
+        // }
+
+        // if (ui_.checkBox_dob->isChecked() == true)
+        // {
+        //     task_msg.dob = true;
+        // }
+        // else
+        // {
+        //     task_msg.dob = false;
+        // }
+
+        // if (ui_.checkBox_IMU->isChecked() == true)
+        // {
+        //     task_msg.imu = true;
+        // }
+        // else
+        // {
+        //     task_msg.imu = false;
+        // }
+
+        // if (ui_.checkBox_mom->isChecked() == true)
+        // {
+        //     task_msg.mom = true;
+        // }
+        // else
+        // {
+        //     task_msg.mom = false;
+        // }
+
+        // task_msg.first_foot_step = ui_.step_mode->currentIndex();
+
+        task_msg.x = m_Q->findChild<QObject *>("text_walking_x")->property("text").toString().toDouble();
+        task_msg.y = m_Q->findChild<QObject *>("text_walking_y")->property("text").toString().toDouble();
+        task_msg.z = m_Q->findChild<QObject *>("text_walking_z")->property("text").toString().toDouble();
+        task_msg.walking_height = m_Q->findChild<QObject *>("text_walking_height")->property("text").toString().toDouble();
+        task_msg.theta = m_Q->findChild<QObject *>("text_walking_theta")->property("text").toString().toDouble();
+        task_msg.step_length_x = m_Q->findChild<QObject *>("text_walking_steplengthx")->property("text").toString().toDouble();
+        task_msg.step_length_y = m_Q->findChild<QObject *>("text_walking_steplengthy")->property("text").toString().toDouble();
+
+        task_pub.publish(task_msg);
+    }
+
+void ros_connect::walkingstartbtncb()
+    {
+        task_msg.walking_enable = 1.0;
+        // task_msg.ik_mode = ui_.ik_mode->currentIndex();
+
+        // if (ui_.walking_pattern->currentIndex() == 0)
+        // { 
+        //     task_msg.pattern = 0;
+        // }
+        // else if (ui_.walking_pattern->currentIndex() == 1)
+        // {
+        //     task_msg.pattern = 1;
+        // }
+        // else
+        // {
+        //     task_msg.pattern = 2;
+        // }
+
+        // if (ui_.controlmode->currentIndex() == 0)
+        // {
+        //     task_msg.comcontrol = 0;
+        // }
+        // else
+        // {
+        //     task_msg.comcontrol = 1;
+        // }
+
+        // if (ui_.walking_pattern_2->currentIndex() == 0)
+        // {
+        //     task_msg.pattern2 = 0;
+        // }
+        // else if (ui_.walking_pattern_2->currentIndex() == 1)
+        // {
+        //     task_msg.pattern2 = 1;
+        // }
+
+        // if (ui_.checkBox_dob->isChecked() == true)
+        // {
+        //     task_msg.dob = true;
+        // }
+        // else
+        // {
+        //     task_msg.dob = false;
+        // }
+
+        // if (ui_.checkBox_IMU->isChecked() == true)
+        // {
+        //     task_msg.imu = true;
+        // }
+        // else
+        // {
+        //     task_msg.imu = false;
+        // }
+
+        // if (ui_.checkBox_mom->isChecked() == true)
+        // {
+        //     task_msg.mom = true;
+        // }
+        // else
+        // {
+        //     task_msg.mom = false;
+        // }
+
+        // task_msg.first_foot_step = ui_.step_mode->currentIndex();
+
+        task_msg.x = m_Q->findChild<QObject *>("text_walking_x")->property("text").toString().toDouble();
+        task_msg.y = m_Q->findChild<QObject *>("text_walking_y")->property("text").toString().toDouble();
+        task_msg.z = m_Q->findChild<QObject *>("text_walking_z")->property("text").toString().toDouble();
+        task_msg.walking_height = m_Q->findChild<QObject *>("text_walking_height")->property("text").toString().toDouble();
+        task_msg.theta = m_Q->findChild<QObject *>("text_walking_theta")->property("text").toString().toDouble();
+        task_msg.step_length_x = m_Q->findChild<QObject *>("text_walking_steplengthx")->property("text").toString().toDouble();
+        task_msg.step_length_y = m_Q->findChild<QObject *>("text_walking_steplengthy")->property("text").toString().toDouble();
+
+
+        task_pub.publish(task_msg);
+    
+    }
+    void ros_connect::que_deletebtn()
+    {
+        // std::cout << ui_.que_listwidget->currentIndex().row() << std::endl;
+        // QListWidgetItem *item = ui_.que_listwidget->takeItem(ui_.que_listwidget->currentIndex().row());
+
+        // ui_.que_listwidget->removeItemWidget(item);
+    }
+    void ros_connect::que_resetbtn()
+    {
+        tq_.clear();
+        std::cout<< "reset func called" << std::endl;
+    }
+
+    void ros_connect::que_sendbtn()
+    {
+        task_que_msg.tque.resize(tq_.size());
+        for (int i = 0; i < tq_.size(); i++)
+        {
+            task_que_msg.tque[i] = tq_[i].tc_;
+        }
+        task_que_pub.publish(task_que_msg);
+
+        std::cout<< "send func called" << std::endl;
+
+    }
+
+    void ros_connect::que_addquebtn()
+    {
+        task_que tq_temp;
+
+        handletaskmsg();
+        tq_temp.tc_ = task_msg;
+
+        tq_.push_back(tq_temp);
+  
+
+        std::cout<< "add func called" << std::endl;
+
+    }
+
 
 
 float ros_connect::pp(float val){
