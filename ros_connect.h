@@ -59,10 +59,13 @@ public:
     Q_INVOKABLE void tasksendcb();
     Q_INVOKABLE void walkinginitbtncb();
     Q_INVOKABLE void walkingstartbtncb();
-    Q_INVOKABLE void que_deletebtn();
+    // Q_INVOKABLE void que_deletebtn();
     Q_INVOKABLE void que_resetbtn();
     Q_INVOKABLE void que_sendbtn();
     Q_INVOKABLE void que_addquebtn();
+    Q_INVOKABLE void slidervelcommand(float slider_val_1, float slider_val_2, float slider_val_3, float slider_val_4);
+
+
     Q_INVOKABLE void update();
     Q_INVOKABLE double t_x();
     Q_INVOKABLE int tt;
@@ -86,7 +89,7 @@ public:
     void VelocityHandle(const sensor_msgs::Joy::ConstPtr& msg);
     void VelHandle_android(const geometry_msgs::Twist::ConstPtr &msg);
     void ChangeConMode(int data);
-  
+
 
     void handletaskmsg();
 

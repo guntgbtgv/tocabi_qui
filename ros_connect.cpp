@@ -589,13 +589,10 @@ void ros_connect::handletaskmsg()
         task_msg.ratio = m_Q->findChild<QObject *>("com_pos")->property("text").toString().toDouble();
         task_msg.height = m_Q->findChild<QObject *>("com_height")->property("text").toString().toDouble();
         
-        // // // task_msg.left_foot = ui_.cb_lf->isChecked();
-        // // // task_msg.right_foot = ui_.cb_rf->isChecked();
-        // // // task_msg.left_hand = ui_.cb_lh->isChecked();
-        // // // task_msg.right_hand = ui_.cb_rh->isChecked();
-
-
-
+        task_msg.left_foot = m_Q->findChild<QObject *>("cb_lf")->property("checked").toUInt();
+        task_msg.right_foot = m_Q->findChild<QObject *>("cb_rf")->property("checked").toUInt();
+        task_msg.left_hand = m_Q->findChild<QObject *>("cb_lh")->property("checked").toUInt();
+        task_msg.right_hand = m_Q->findChild<QObject *>("cb_rh")->property("checked").toUInt();
 
         task_msg.l_x = m_Q->findChild<QObject *>("text_l_x")->property("text").toString().toDouble();
         task_msg.l_y = m_Q->findChild<QObject *>("text_l_y")->property("text").toString().toDouble();
@@ -612,17 +609,17 @@ void ros_connect::handletaskmsg()
         task_msg.r_yaw = m_Q->findChild<QObject *>("text_r_yaw")->property("text").toString().toDouble();
 
         task_msg.time = m_Q->findChild<QObject *>("text_traj_time")->property("text").toString().toDouble();
-        // // task_msg.mode = ui_.task_mode->currentIndex();
+        task_msg.mode = m_Q->findChild<QObject *>("task_mode")->property("currentIndex").toInt(); 
 
-        // task_msg.customTaskGain =  m_Q->findChild<QObject *>("customtaskgain")->property("")isChecked();
+        task_msg.customTaskGain =  m_Q->findChild<QObject *>("customtaskgain")->property("checked").toUInt();
 
-        // // // task_msg.solver = ui_.solver_mode->currentIndex();
+        task_msg.solver = m_Q->findChild<QObject *>("solver_mode")->property("currentIndex").toInt();
 
-        // // // task_msg.contactredis = ui_.cr_mode->currentIndex();
+        task_msg.contactredis = m_Q->findChild<QObject *>("cr_mode")->property("currentIndex").toInt();
 
         task_msg.acc_p = m_Q->findChild<QObject *>("accgain")->property("text").toString().toDouble();
 
-        // // // task_msg.maintain_lc = ui_.checkBox->isChecked();
+        task_msg.maintain_lc = m_Q->findChild<QObject *>("checkBox")->property("checked").toUInt();
 
         if (task_msg.customTaskGain)
         {
@@ -733,62 +730,62 @@ void ros_connect::ChangeConMode(int data)
 void ros_connect::walkinginitbtncb()
     {
         task_msg.walking_enable = 3.0;
-        // task_msg.ik_mode = ui_.ik_mode->currentIndex();
+        task_msg.ik_mode = m_Q->findChild<QObject *>("ik_mode")->property("currentIndex").toInt(); 
 
-        // if (ui_.walking_pattern->currentIndex() == 0)
-        // {
-        //     task_msg.pattern = 0;
-        // }
-        // else if (ui_.walking_pattern->currentIndex() == 1)
-        // {
-        //     task_msg.pattern = 1;
-        // }
-        // else
-        // {
-        //     task_msg.pattern = 2;
-        // }
+        if (m_Q->findChild<QObject *>("walking_pattern")->property("currentIndex").toInt()  == 0)
+        {
+            task_msg.pattern = 0;
+        }
+        else if (m_Q->findChild<QObject *>("walking_pattern")->property("currentIndex").toInt() == 1)
+        {
+            task_msg.pattern = 1;
+        }
+        else
+        {
+            task_msg.pattern = 2;
+        }
 
-        // if (ui_.controlmode->currentIndex() == 0)
-        // {
-        //     task_msg.comcontrol = 0;
-        // }
-        // else if (ui_.controlmode->currentIndex() == 1)
-        // {
-        //     task_msg.comcontrol = 1;
-        // }
-        // else
-        // {
-        //     task_msg.comcontrol = 2;
-        // }
+        if (m_Q->findChild<QObject *>("controlmode")->property("currentIndex").toInt() == 0)
+        {
+            task_msg.comcontrol = 0;
+        }
+        else if (m_Q->findChild<QObject *>("controlmode")->property("currentIndex").toInt()  == 1)
+        {
+            task_msg.comcontrol = 1;
+        }
+        else
+        {
+            task_msg.comcontrol = 2;
+        }
 
-        // if (ui_.checkBox_dob->isChecked() == true)
-        // {
-        //     task_msg.dob = true;
-        // }
-        // else
-        // {
-        //     task_msg.dob = false;
-        // }
+        if (m_Q->findChild<QObject *>("checkBox_dob")->property("checked").toUInt() == true)
+        {
+            task_msg.dob = true;
+        }
+        else
+        {
+            task_msg.dob = false;
+        }
 
-        // if (ui_.checkBox_IMU->isChecked() == true)
-        // {
-        //     task_msg.imu = true;
-        // }
-        // else
-        // {
-        //     task_msg.imu = false;
-        // }
+        if (m_Q->findChild<QObject *>("checkBox_IMU")->property("checked").toUInt() == true)
+        {
+            task_msg.imu = true;
+        }
+        else
+        {
+            task_msg.imu = false;
+        }
 
-        // if (ui_.checkBox_mom->isChecked() == true)
-        // {
-        //     task_msg.mom = true;
-        // }
-        // else
-        // {
-        //     task_msg.mom = false;
-        // }
+        if (m_Q->findChild<QObject *>("checkBox_mom")->property("checked").toUInt() == true)
+        {
+            task_msg.mom = true;
+        }
+        else
+        {
+            task_msg.mom = false;
+        }
 
-        // task_msg.first_foot_step = ui_.step_mode->currentIndex();
+        task_msg.first_foot_step = m_Q->findChild<QObject *>("step_mode")->property("currentIndex").toInt();
 
         task_msg.x = m_Q->findChild<QObject *>("text_walking_x")->property("text").toString().toDouble();
         task_msg.y = m_Q->findChild<QObject *>("text_walking_y")->property("text").toString().toDouble();
@@ -804,67 +801,67 @@ void ros_connect::walkinginitbtncb()
 void ros_connect::walkingstartbtncb()
     {
         task_msg.walking_enable = 1.0;
-        // task_msg.ik_mode = ui_.ik_mode->currentIndex();
+        task_msg.ik_mode = m_Q->findChild<QObject *>("ik_mode")->property("currentIndex").toInt(); 
 
-        // if (ui_.walking_pattern->currentIndex() == 0)
-        // { 
-        //     task_msg.pattern = 0;
-        // }
-        // else if (ui_.walking_pattern->currentIndex() == 1)
-        // {
-        //     task_msg.pattern = 1;
-        // }
-        // else
-        // {
-        //     task_msg.pattern = 2;
-        // }
+        if (m_Q->findChild<QObject *>("walking_pattern")->property("currentIndex").toInt() == 0)
+        { 
+            task_msg.pattern = 0;
+        }
+        else if (m_Q->findChild<QObject *>("walking_pattern")->property("currentIndex").toInt() == 1)
+        {
+            task_msg.pattern = 1;
+        }
+        else
+        {
+            task_msg.pattern = 2;
+        }
 
-        // if (ui_.controlmode->currentIndex() == 0)
-        // {
-        //     task_msg.comcontrol = 0;
-        // }
-        // else
-        // {
-        //     task_msg.comcontrol = 1;
-        // }
+        if (m_Q->findChild<QObject *>("controlmode")->property("currentIndex").toInt() == 0)
+        {
+            task_msg.comcontrol = 0;
+        }
+        else
+        {
+            task_msg.comcontrol = 1;
+        }
 
-        // if (ui_.walking_pattern_2->currentIndex() == 0)
-        // {
-        //     task_msg.pattern2 = 0;
-        // }
-        // else if (ui_.walking_pattern_2->currentIndex() == 1)
-        // {
-        //     task_msg.pattern2 = 1;
-        // }
+        if (m_Q->findChild<QObject *>("walking_pattern_2")->property("currentIndex").toInt() == 0)
+        {
+            task_msg.pattern2 = 0;
+        }
+        else if (m_Q->findChild<QObject *>("walking_pattern_2")->property("currentIndex").toInt() == 1)
+        {
+            task_msg.pattern2 = 1;
+        }
 
-        // if (ui_.checkBox_dob->isChecked() == true)
-        // {
-        //     task_msg.dob = true;
-        // }
-        // else
-        // {
-        //     task_msg.dob = false;
-        // }
+        if (m_Q->findChild<QObject *>("checkBox_dob")->property("checked").toUInt() == true)
+        {
+            task_msg.dob = true;
+        }
+        else
+        {
+            task_msg.dob = false;
+        }
 
-        // if (ui_.checkBox_IMU->isChecked() == true)
-        // {
-        //     task_msg.imu = true;
-        // }
-        // else
-        // {
-        //     task_msg.imu = false;
-        // }
+        if (m_Q->findChild<QObject *>("checkBox_IMU")->property("checked").toUInt() == true)
+        {
+            task_msg.imu = true;
+        }
+        else
+        {
+            task_msg.imu = false;
+        }
 
-        // if (ui_.checkBox_mom->isChecked() == true)
-        // {
-        //     task_msg.mom = true;
-        // }
-        // else
-        // {
-        //     task_msg.mom = false;
-        // }
+        if (m_Q->findChild<QObject *>("checkBox_mom")->property("checked").toUInt() == true)
+        {
+            task_msg.mom = true;
+        }
+        else
+        {
+            task_msg.mom = false;
+        }
 
-        // task_msg.first_foot_step = ui_.step_mode->currentIndex();
+        task_msg.first_foot_step = m_Q->findChild<QObject *>("step_mode")->property("currentIndex").toInt();
 
         task_msg.x = m_Q->findChild<QObject *>("text_walking_x")->property("text").toString().toDouble();
         task_msg.y = m_Q->findChild<QObject *>("text_walking_y")->property("text").toString().toDouble();
@@ -878,13 +875,13 @@ void ros_connect::walkingstartbtncb()
         task_pub.publish(task_msg);
     
     }
-    void ros_connect::que_deletebtn()
-    {
-        // std::cout << ui_.que_listwidget->currentIndex().row() << std::endl;
-        // QListWidgetItem *item = ui_.que_listwidget->takeItem(ui_.que_listwidget->currentIndex().row());
+    // void ros_connect::que_deletebtn()
+    // {
+    //     // std::cout << ui_.que_listwidget->currentIndex().row() << std::endl;
+    //     // QListWidgetItem *item = ui_.que_listwidget->takeItem(ui_.que_listwidget->currentIndex().row());
 
-        // ui_.que_listwidget->removeItemWidget(item);
-    }
+    //     // ui_.que_listwidget->removeItemWidget(item);
+    // }
     void ros_connect::que_resetbtn()
     {
         tq_.clear();
@@ -916,6 +913,53 @@ void ros_connect::walkingstartbtncb()
 
         std::cout<< "add func called" << std::endl;
 
+    }
+
+    void ros_connect::slidervelcommand(float slider_val_1, float slider_val_2, float slider_val_3, float slider_val_4)
+    {
+        velcmd_msg.des_vel.resize(6);
+        int gui_selected = m_Q->findChild<QObject *>("comboBox")->property("currentIndex").toInt(); 
+        int start_index = 0;
+        if (gui_selected == 0)
+        {
+            velcmd_msg.task_link = 0;
+            start_index = 0;
+        }
+        else if (gui_selected == 1)
+        {
+            velcmd_msg.task_link = 0;
+            start_index = 3;
+        }
+        else if (gui_selected == 2)
+        {
+            velcmd_msg.task_link = 1;
+            start_index = 3;
+        }
+        else if (gui_selected == 3)
+        {
+            velcmd_msg.task_link = 2;
+            start_index = 0;
+        }
+        else if (gui_selected == 4)
+        {
+            velcmd_msg.task_link = 2;
+            start_index = 3;
+        }
+        else if (gui_selected == 5)
+        {
+            velcmd_msg.task_link = 3;
+            start_index = 0;
+        }
+        else if (gui_selected == 6)
+        {
+            velcmd_msg.task_link = 3;
+            start_index = 3;
+        }
+
+        velcmd_msg.des_vel[start_index + 0] = (slider_val_1 - 50) / 200.0 * slider_val_4;
+        velcmd_msg.des_vel[start_index + 1] = (slider_val_2 - 50) / 200.0 * slider_val_4;
+        velcmd_msg.des_vel[start_index + 2] = (slider_val_3 - 50) / 200.0 * slider_val_4;
+        velcommand_pub.publish(velcmd_msg);
     }
 
 

@@ -38,6 +38,8 @@ Page {
         Row {
 
             id: arm
+            width: 200
+            height: 165
             spacing: 10
             anchors.left: mover.left
             anchors.top: mover.bottom
@@ -48,6 +50,8 @@ Page {
             Column{
                 spacing: 10
                 id: cl3
+                width: 48
+                height: 165
 
 
 
@@ -90,6 +94,8 @@ Page {
             }
 
             Column{
+                width: 40
+                height: 140
                 spacing: 10
                 anchors.bottom: cl3.bottom
 
@@ -178,6 +184,8 @@ Page {
             Column{
                 spacing: 10
                 id: cl4
+                width: 27
+                height: 140
                 anchors.bottom: cl3.bottom
 
                 Text {
@@ -214,6 +222,8 @@ Page {
             }
 
             Column{
+                width: 55
+                height: 165
                 spacing: 10
                 anchors.bottom: cl3.bottom
 
@@ -430,6 +440,8 @@ Page {
             anchors.left: arm.left
 
             CheckBox {
+                id:cb_lf
+                objectName: "cb_lf"
                 height: 20
                 text: qsTr("l foot")
                 font.pixelSize: 12
@@ -438,6 +450,8 @@ Page {
 
             }
             CheckBox {
+                id:cb_rf
+                objectName: "cb_rf"
                 height: 20
                 text: qsTr("r foot")
                 font.pixelSize: 12
@@ -445,6 +459,8 @@ Page {
 
             }
             CheckBox {
+                id:cb_lh
+                objectName: "cb_lh"
                 height: 20
                 text: qsTr("l hand")
                 font.pixelSize: 12
@@ -452,6 +468,8 @@ Page {
 
             }
             CheckBox {
+                id:cb_rh
+                objectName: "cb_rh"
                 height: 20
                 text: qsTr("r hand")
                 font.pixelSize: 12
@@ -462,8 +480,14 @@ Page {
 
         Column {
             id: custaskgain
+            x: 468
+            width: 128
+            height: 146
             anchors.top: parent.top
+            anchors.rightMargin: 0
+            anchors.topMargin: 0
             anchors.right: parent.right
+            spacing: 1
 
             CheckBox {
                 id: customtaskgain
@@ -473,10 +497,10 @@ Page {
                 padding: 0
             }
 
+
             Row {
-
                 spacing: 10
-
+                enabled: customtaskgain.checked
 
                 Column {
                     spacing: 10
@@ -565,6 +589,7 @@ Page {
                     }
                 }
             }
+
         }
 
         Column {
@@ -574,27 +599,46 @@ Page {
             anchors.leftMargin: 10
 
             Slider {
-                id: slider
+                id: horizontalSlider_1
+                objectName: "horizontalSlider_1"
                 width: 300
                 height: 20
-                snapMode: Slider.SnapOnRelease
-                value: 0.5
+                stepSize: 1
+                to: 99
+                from: 0
+                value: 50
+                onValueChanged: ros.slidervelcommand(valueAt(position), valueAt(horizontalSlider_2.position), valueAt(horizontalSlider_3.position), horizontalSlider_4.valueAt(horizontalSlider_4.position))
+                onPressedChanged: value = 50
+
             }
 
             Slider {
-                id: slider1
+                id: horizontalSlider_2
+                objectName: "horizontalSlider_2"
                 width: 300
                 height: 20
-                snapMode: Slider.SnapOnRelease
-                value: 0.5
+                stepSize: 1
+                to: 99
+                from: 0
+                value: 50
+                onValueChanged: ros.slidervelcommand(valueAt(horizontalSlider_1.position), valueAt(position), valueAt(horizontalSlider_3.position), horizontalSlider_4.valueAt(horizontalSlider_4.position))
+                onPressedChanged: value = 50
+
             }
 
             Slider {
-                id: slider2
+                id: horizontalSlider_3
+                objectName: "horizontalSlider_3"
                 width: 300
                 height: 20
-                snapMode: Slider.SnapOnRelease
-                value: 0.5
+                stepSize: 1
+                to: 99
+                from: 0
+                value: 50
+                onValueChanged: ros.slidervelcommand(valueAt(horizontalSlider_1.position), valueAt(horizontalSlider_2.position), valueAt(position), horizontalSlider_4.valueAt(horizontalSlider_4.position))
+                onPressedChanged: value = 50
+
+
             }
         }
 
@@ -619,13 +663,18 @@ Page {
                 font.pixelSize: 12
                 model: ["COM pos", "Pelv Rot", "UpperBody Rotation",
                     "Right Hand pos", "Right Hand rot", "Left Hand pos", "Left Hand rot"]
+                objectName: "comboBox"
             }
 
             Slider {
-                id: slider3
+                id: horizontalSlider_4
                 width: 100
                 height: 20
-                value: 0.0
+                stepSize: 1
+                to: 20
+                from: 1
+                value: 1
+                objectName: "horizontalSlider_4"
             }
         }
 
@@ -643,6 +692,8 @@ Page {
             }
 
             ComboBox {
+                id: solver_mode
+                objectName: "solver_mode"
                 width: 140
                 height: 30
                 font.pixelSize: 12
@@ -655,14 +706,18 @@ Page {
             }
 
             ComboBox {
+                id: cr_mode
+                objectName: "cr_mode"
                 width: 140
                 height: 30
                 font.pixelSize: 12
                 model: ["Yslee", "QP", "off"]
+                enabled: solver_mode.currentIndex == 0
             }
 
             CheckBox {
-                id: checkBox1
+                id: checkBox
+                objectName: "checkBox"
                 height: 20
                 text: qsTr("Maintain LC")
                 font.pixelSize: 12
@@ -711,6 +766,8 @@ Page {
                 }
 
                 ComboBox {
+                    id: task_mode
+                    objectName: "task_mode"
                     width: 120
                     height: 30
                     font.pixelSize: 12
@@ -989,7 +1046,7 @@ Page {
                     width: 60
                     height: 15
 
-                    text: qsTr("Text Field")
+                    text: qsTr("0.5")
                     objectName: "text_walking_x"
                     font.pixelSize: 12
                     topPadding: 0
@@ -998,7 +1055,7 @@ Page {
                 TextField {
                     width: 60
                     height: 15
-                    text: qsTr("Text Field")
+                    text: qsTr("0.0")
                     objectName: "text_walking_y"
                     font.pixelSize: 12
                     topPadding: 0
@@ -1008,7 +1065,7 @@ Page {
                     width: 60
                     height: 15
                     objectName: "text_walking_z"
-                    text: qsTr("Text Field")
+                    text: qsTr("0.0")
                     font.pixelSize: 12
                     topPadding: 0
                     bottomPadding: 0
@@ -1017,7 +1074,7 @@ Page {
                     width: 60
                     height: 15
                     objectName: "text_walking_height"
-                    text: qsTr("Text Field")
+                    text: qsTr("0.0")
                     font.pixelSize: 12
                     topPadding: 0
                     bottomPadding: 0
@@ -1026,7 +1083,7 @@ Page {
                     width: 60
                     height: 15
                     objectName: "text_walking_theta"
-                    text: qsTr("Text Field")
+                    text: qsTr("0.0")
                     font.pixelSize: 12
                     topPadding: 0
                     bottomPadding: 0
@@ -1066,7 +1123,7 @@ Page {
                 TextField {
                     width: 60
                     height: 15
-                    text: qsTr("0.0")
+                    text: qsTr("0.1")
                     objectName: "text_walking_steplengthx"
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
@@ -1077,7 +1134,7 @@ Page {
                 TextField {
                     width: 60
                     height: 15
-                    text: qsTr("Text Field")
+                    text: qsTr("0.0")
                     objectName: "text_walking_steplengthy"
                     font.pixelSize: 12
                     horizontalAlignment: TextInput.AlignHCenter
@@ -1098,6 +1155,8 @@ Page {
             spacing: -5
 
             ComboBox {
+                id: walking_pattern
+                objectName: "walking_pattern"
                 width: 140
                 height: 30
                 font.pixelSize: 12
@@ -1106,6 +1165,8 @@ Page {
             }
 
             ComboBox {
+                id: walking_pattern_2
+                objectName: "walking_pattern_2"
                 width: 140
                 height: 30
                 font.pixelSize: 12
@@ -1114,6 +1175,8 @@ Page {
             }
 
             ComboBox {
+                id: ik_mode
+                objectName: "ik_mode"
                 width: 140
                 height: 30
                 font.pixelSize: 12
@@ -1122,6 +1185,8 @@ Page {
             }
 
             ComboBox {
+                id: controlmode
+                objectName: "controlmode"
                 width: 140
                 height: 30
                 font.pixelSize: 12
@@ -1130,6 +1195,8 @@ Page {
             }
 
             ComboBox {
+                id: step_mode
+                objectName: "step_mode"
                 width: 140
                 height: 30
                 font.pixelSize: 12
@@ -1150,12 +1217,16 @@ Page {
             spacing: 10
 
             CheckBox {
+                id: checkBox_dob
+                objectName: "checkBox_dob"
                 height: 20
                 text: qsTr("DOB")
                 font.pixelSize: 12
             }
 
             CheckBox {
+                id: checkBox_IMU
+                objectName: "checkBox_IMU"
                 height: 20
                 text: qsTr("IMU")
                 font.pixelSize: 12
@@ -1165,8 +1236,11 @@ Page {
         }
 
         CheckBox {
+            id: checkBox_mom
+            objectName: "checkBox_mom"
             anchors.top: checkBoxs2.bottom
             anchors.left: checkBoxs2.left
+
             height: 20
             text: qsTr("mom")
             font.pixelSize: 12
@@ -1269,6 +1343,6 @@ Page {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.100000023841858}
+    D{i:0;formeditorZoom:1.25}
 }
 ##^##*/
