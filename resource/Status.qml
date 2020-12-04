@@ -1017,25 +1017,25 @@ Page {
         }
     }
 
-    Button {
-        id: button
-        x: 613
-        y: 42
-        text: qsTr("Gravity")
-        onClicked: {
-            ros.button_ros(0,"gravity");
-        }
-    }
+//    Button {
+//        id: button
+//        x: 613
+//        y: 42
+//        text: qsTr("Gravity")
+//        onClicked: {
+//            ros.button_ros(0,"gravity");
+//        }
+//    }
 
-    Button {
-        id: button1
-        x: 730
-        y: 42
-        text: qsTr("Task")
-        onClicked: {
-            ros.button_ros(1,"task");
-        }
-    }
+//    Button {
+//        id: button1
+//        x: 730
+//        y: 42
+//        text: qsTr("Task")
+//        onClicked: {
+//            ros.button_ros(1,"task");
+//        }
+//    }
     
     Text {
         id: text10
@@ -1045,22 +1045,4 @@ Page {
         font.pixelSize: 12
     }
 
-
-    TabBar {
-        id: tabBar
-        x: 848
-        y: 42
-        width: 162
-        height: 40
-        currentIndex: swipeView.currentIndex
-        
-
-        TabButton {
-            text: 'test 1 '
-        }
-
-        TabButton {
-            text: 'test 2 '
-        }
-    }
 }

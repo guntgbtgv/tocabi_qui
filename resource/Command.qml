@@ -8,7 +8,7 @@ Page {
 
     Frame {
         id: frame1
-        width: 620
+        width: 799
         height: 400
         anchors.left: parent.left
         anchors.top: parent.top
@@ -17,11 +17,10 @@ Page {
 
         Row {
             id: mover
-            spacing: 240
-            anchors.left: parent.left
-            anchors.leftMargin: 10
+            x: 133
+            spacing: 250
             anchors.top: parent.top
-            anchors.topMargin: 5
+            anchors.topMargin: 0
 
             Text {
                 text: qsTr("Arm mover")
@@ -35,289 +34,352 @@ Page {
         }
 
 
-        Row {
 
-            id: arm
-            width: 200
-            height: 165
+        Column{
             spacing: 10
-            anchors.left: mover.left
-            anchors.top: mover.bottom
-            anchors.topMargin: 10
+            id: cl3
+            x: 12
+            y: 25
+            width: 48
+            height: 165
+            anchors.right: cl7.left
+            anchors.rightMargin: 5
 
 
-
-            Column{
-                spacing: 10
-                id: cl3
-                width: 48
-                height: 165
-
-
-
-                Text {
-                    id:larm
-                    text: qsTr("Left Arm")
-                    font.pixelSize: 12
-
-                }
-
-                Text {
-                    text: qsTr("x")
-                    font.pixelSize: 12
-
-                }
-                Text {
-                    text: qsTr("y")
-                    font.pixelSize: 12
-
-                }
-                Text {
-                    text: qsTr("z")
-                    font.pixelSize: 12
-
-                }
-                Text {
-                    text: qsTr("roll")
-                    font.pixelSize: 12
-
-                }
-                Text {
-                    text: qsTr("pitch")
-                    font.pixelSize: 12
-
-                }
-                Text {
-                    text: qsTr("yaw")
-                    font.pixelSize: 12
-                }
-            }
-
-            Column{
-                width: 40
-                height: 140
-                spacing: 10
-                anchors.bottom: cl3.bottom
-
-
-                TextField {
-                    id: text_l_x
-                    height: 15
-                    width: 40
-                    font.pixelSize: 12
-                    text: qsTr("3.5")
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "text_l_x"
-                }
-                TextField {
-                    id: text_l_y
-                    height: 15
-                    width: 40
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    text: qsTr("3.5")
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "text_l_y"
-
-                }
-
-                TextField {
-                    id:text_l_z
-
-                    text: qsTr("3.5")
-                    height: 15
-                    width: 40
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "text_l_z"
-
-                }
-                TextField {
-                    id:text_l_roll
-
-                    height: 15
-                    text: qsTr("3.5")
-                    width: 40
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "text_l_roll"
-
-                }
-                TextField {
-                    id:text_l_pitch
-
-                    height: 15
-                    text: qsTr("3.5")
-                    width: 40
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "text_l_pitch"
-
-                }
-                TextField {
-                    id:text_l_yaw
-
-                    height: 15
-                    width: 40
-                    text: qsTr("3.5")
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "text_l_yaw"
-
-                }
-
+            Text {
+                id:larm
+                text: qsTr("Left Arm")
+                font.pixelSize: 12
 
             }
 
-
-            Column{
-                spacing: 10
-                id: cl4
-                width: 27
-                height: 140
-                anchors.bottom: cl3.bottom
-
-                Text {
-                    text: qsTr("x")
-                    font.pixelSize: 12
-
-                }
-                Text {
-                    text: qsTr("y")
-                    font.pixelSize: 12
-
-                }
-                Text {
-                    text: qsTr("z")
-                    font.pixelSize: 12
-
-                }
-                Text {
-                    text: qsTr("roll")
-                    font.pixelSize: 12
-
-                }
-                Text {
-                    text: qsTr("pitch")
-                    font.pixelSize: 12
-
-                }
-                Text {
-                    text: qsTr("yaw")
-                    font.pixelSize: 12
-                }
-
+            Text {
+                text: qsTr("x")
+                font.pixelSize: 12
 
             }
+            Text {
+                text: qsTr("y")
+                font.pixelSize: 12
 
-            Column{
-                width: 55
-                height: 165
-                spacing: 10
-                anchors.bottom: cl3.bottom
+            }
+            Text {
+                text: qsTr("z")
+                font.pixelSize: 12
 
-                Text {
+            }
+            Text {
+                text: qsTr("roll")
+                font.pixelSize: 12
 
-                    text: qsTr("Right Arm")
-                    font.pixelSize: 12
-                }
+            }
+            Text {
+                text: qsTr("pitch")
+                font.pixelSize: 12
 
-
-
-                TextField {
-                    id: text_r_x
-                    height: 15
-                    width: 40
-                    font.pixelSize: 12
-                    text: qsTr("3.5")
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "text_r_x"
-                }
-                TextField {
-                    id: text_r_y
-                    height: 15
-                    width: 40
-                    text: qsTr("3.5")
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "text_r_y"
-
-                }
-
-                TextField {
-                    id:text_r_z
-                    height: 15
-                    width: 40
-                    text: qsTr("3.5")
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "text_r_z"
-
-                }
-                TextField {
-                    id:text_r_roll
-                    height: 15
-                    width: 40
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    text: qsTr("3.5")
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "text_r_roll"
-
-                }
-                TextField {
-                    id:text_r_pitch
-                    height: 15
-                    width: 40
-                    font.pixelSize: 12
-                    text: qsTr("3.5")
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "text_r_pitch"
-
-                }
-                TextField {
-                    id:text_r_yaw
-                    height: 15
-                    width: 40
-                    text: qsTr("3.5")
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                    objectName: "text_r_yaw"
-
-                }
+            }
+            Text {
+                text: qsTr("yaw")
+                font.pixelSize: 12
 
             }
         }
 
 
+        Column {
+            id: cl7
+            x: 72
+            y: 25
+            width: 80
+            height: 165
+            anchors.bottom: cl3.bottom
+            anchors.bottomMargin: 0
+            spacing: 10
+
+
+            Text {
+                text: qsTr("    ")
+            }
+
+
+            Button {
+                objectName: "text_l_x"
+                height: 15
+                width: parent.width
+                text: pad.l_x
+                onClicked: {
+                    if(pad.visible == false) {
+                        pad.visible = true
+                        numPad.digits = ""
+                    }
+                    else pad.visible = false
+                    pad.target_ = "l_x"
+                    pad.x = cl7.x + 100
+                    pad.y = cl7.y
+                }
+            }
+
+            Button {
+                objectName: "text_l_y"
+                height: 15
+                width: parent.width
+                text: pad.l_y
+                onClicked: {
+                    if(pad.visible == false) {
+                        pad.visible = true
+                        numPad.digits = ""
+                    }
+                    else pad.visible = false
+                    pad.target_ = "l_y"
+                    pad.x = cl7.x + 100
+                    pad.y = cl7.y
+                }
+            }
+
+            Button {
+                objectName: "text_l_z"
+                height: 15
+                width: parent.width
+                text: pad.l_z
+                onClicked: {
+                    if(pad.visible == false) {
+                        pad.visible = true
+                        numPad.digits = ""
+                    }
+                    else pad.visible = false
+                    pad.target_ = "l_z"
+                    pad.x = cl7.x + 100
+                    pad.y = cl7.y
+                }
+            }
+
+            Button {
+                objectName: "text_l_roll"
+                height: 15
+                width: parent.width
+                text: pad.l_roll
+                onClicked: {
+                    if(pad.visible == false) {
+                        pad.visible = true
+                        numPad.digits = ""
+                    }
+                    else pad.visible = false
+                    pad.target_ = "l_roll"
+                    pad.x = cl7.x + 100
+                    pad.y = cl7.y
+                }
+            }
+            Button {
+                objectName: "text_l_pitch"
+                height: 15
+                width: parent.width
+                text: pad.l_pitch
+                onClicked: {
+                    if(pad.visible == false) {
+                        pad.visible = true
+                        numPad.digits = ""
+                    }
+                    else pad.visible = false
+                    pad.target_ = "l_pitch"
+                    pad.x = cl7.x + 100
+                    pad.y = cl7.y
+                }
+            }
+            Button {
+                objectName: "text_l_yaw"
+                height: 15
+                width: parent.width
+                text: pad.l_yaw
+                onClicked: {
+                    if(pad.visible == false) {
+                        pad.visible = true
+                        numPad.digits = ""
+                    }
+                    else pad.visible = false
+                    pad.target_ = "l_yaw"
+                    pad.x = cl7.x + 100
+                    pad.y = cl7.y
+                }
+            }
+
+
+        }
+
+
+        Column{
+            spacing: 10
+            id: cl4
+            width: 27
+            height: 140
+            anchors.bottom: cl3.bottom
+            anchors.rightMargin: 10
+            anchors.bottomMargin: 0
+            anchors.right: cl5.left
+
+
+            Text {
+                text: qsTr("x")
+                font.pixelSize: 12
+
+            }
+            Text {
+                text: qsTr("y")
+                font.pixelSize: 12
+
+            }
+            Text {
+                text: qsTr("z")
+                font.pixelSize: 12
+
+            }
+            Text {
+                text: qsTr("roll")
+                font.pixelSize: 12
+
+            }
+            Text {
+                text: qsTr("pitch")
+                font.pixelSize: 12
+
+            }
+            Text {
+                text: qsTr("yaw")
+                font.pixelSize: 12
+            }
+
+
+        }
+
+        Column{
+            id: cl5
+            x: 236
+            y: 25
+            width: 80
+            height: 165
+            spacing: 10
+            anchors.bottom: cl3.bottom
+            anchors.bottomMargin: 0
+
+            Text {
+
+                text: qsTr("Right Arm")
+                font.pixelSize: 12
+            }
+
+
+            Button {
+                objectName: "text_r_x"
+                height: 15
+                width: parent.width
+                text: pad.r_x
+                onClicked: {
+                    if(pad.visible == false) {
+                        pad.visible = true
+                        numPad.digits = ""
+                    }
+                    else pad.visible = false
+                    pad.target_ = "r_x"
+                    pad.x = cl5.x + 100
+                    pad.y = cl5.y
+                }
+            }
+
+
+            Button {
+                objectName: "text_r_y"
+                height: 15
+                width: parent.width
+                text: pad.r_y
+                onClicked: {
+                    if(pad.visible == false) {
+                        pad.visible = true
+                        numPad.digits = ""
+                    }
+                    else pad.visible = false
+                    pad.target_ = "r_y"
+                    pad.x = cl5.x + 100
+                    pad.y = cl5.y
+                }
+            }
+
+            Button {
+                objectName: "text_r_z"
+                height: 15
+                width: parent.width
+                text: pad.r_z
+                onClicked: {
+                    if(pad.visible == false) {
+                        pad.visible = true
+                        numPad.digits = ""
+                    }
+                    else pad.visible = false
+                    pad.target_ = "r_z"
+                    pad.x = cl5.x + 100
+                    pad.y = cl5.y
+                }
+            }
+            Button {
+                objectName: "text_r_roll"
+                height: 15
+                width: parent.width
+                text: pad.r_roll
+                onClicked: {
+                    if(pad.visible == false) {
+                        pad.visible = true
+                        numPad.digits = ""
+                    }
+                    else pad.visible = false
+                    pad.target_ = "r_roll"
+                    pad.x = cl5.x + 100
+                    pad.y = cl5.y
+                }
+            }
+            Button {
+                objectName: "text_r_pitch"
+                height: 15
+                width: parent.width
+                text: pad.r_pitch
+                onClicked: {
+                    if(pad.visible == false) {
+                        pad.visible = true
+                        numPad.digits = ""
+                    }
+                    else pad.visible = false
+                    pad.target_ = "r_pitch"
+                    pad.x = cl5.x + 100
+                    pad.y = cl5.y
+                }
+            }
+            Button {
+                objectName: "text_r_yaw"
+                height: 15
+                width: parent.width
+                text: pad.r_yaw
+                onClicked: {
+                    if(pad.visible == false) {
+                        pad.visible = true
+                        numPad.digits = ""
+                    }
+                    else pad.visible = false
+                    pad.target_ = "r_yaw"
+                    pad.x = cl5.x + 100
+                    pad.y = cl5.y
+                }
+            }
+
+        }
+
+
         Row {
             id: com
+            x: 293
+            y: 23
+            width: 192
+            height: 167
             spacing: 10
             anchors.right: mover.right
-            anchors.bottom: arm.bottom
-            anchors.top: mover.bottom
+            anchors.bottom: cl3.bottom
+            anchors.rightMargin: -80
 
 
 
@@ -359,75 +421,112 @@ Page {
             }
 
             Column{
+                id: cl9
+                width: 80
                 spacing: 10
                 anchors.bottom: parent.bottom
 
-                TextField {
-                    height: 15
-                    width: 40
+                Text {
+                    text: qsTr(" ")
+                }
+
+                Button {
                     objectName: "com_pos"
-                    text: qsTr("3.5")
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
+                    height: 15
+                    width: parent.width
+                    text: pad.com_pos
+                    onClicked: {
+                        if(pad.visible == false) {
+                            pad.visible = true
+                            numPad.digits = ""
+                        }
+                        else pad.visible = false
+
+                        pad.x = com.x + 200
+                        pad.y = com.y
+                        pad.target_ = "com_pos"
+                    }
                 }
 
-                TextField {
-                    height: 15
-                    width: 40
+                Button {
                     objectName: "com_height"
-
-                    text: qsTr("3.5")
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                }
-
-                TextField {
                     height: 15
-                    width: 40
+                    width: parent.width
+                    text: pad.com_height
+                    onClicked: {
+                        if(pad.visible == false) {
+                            pad.visible = true
+                            numPad.digits = ""
+                        }
+                        else pad.visible = false
+                        pad.target_ = "com_height"
+                        pad.x = com.x + 200
+                        pad.y = com.y
+                    }
+                }
+                Button {
                     objectName: "pelv_pitch"
-                    text: qsTr("3.5")
-
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                }
-                TextField {
                     height: 15
-                    width: 40
+                    width: parent.width
+                    text: pad.pelv_pitch
+                    onClicked: {
+                        if(pad.visible == false) {
+                            pad.visible = true
+                            numPad.digits = ""
+                        }
+                        else pad.visible = false
+                        pad.target_ = "pelv_pitch"
+                        pad.x = com.x + 200
+                        pad.y = com.y
+                    }
+                }
+                Button {
                     objectName: "com_roll"
-
-                    text: qsTr("3.5")
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                }
-                TextField {
                     height: 15
-                    width: 40
+                    width: parent.width
+                    text: pad.com_roll
+                    onClicked: {
+                        if(pad.visible == false) {
+                            pad.visible = true
+                            numPad.digits = ""
+                        }
+                        else pad.visible = false
+                        pad.target_ = "com_roll"
+                        pad.x = com.x + 200
+                        pad.y = com.y
+                    }
+                }
+                Button {
                     objectName: "com_pitch"
-
-                    text: qsTr("3.5")
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
-                }
-                TextField {
                     height: 15
-                    width: 40
+                    width: parent.width
+                    text: pad.com_pitch
+                    onClicked: {
+                        if(pad.visible == false) {
+                            pad.visible = true
+                            numPad.digits = ""
+                        }
+                        else pad.visible = false
+                        pad.target_ = "com_pitch"
+                        pad.x = com.x + 200
+                        pad.y = com.y
+                    }
+                }
+                Button {
                     objectName: "com_yaw"
-
-                    text: qsTr("3.5")
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
+                    height: 15
+                    width: parent.width
+                    text: pad.com_yaw
+                    onClicked: {
+                        if(pad.visible == false) {
+                            pad.visible = true
+                            numPad.digits = ""
+                        }
+                        else pad.visible = false
+                        pad.target_ = "com_yaw"
+                        pad.x = com.x + 200
+                        pad.y = com.y
+                    }
                 }
             }
         }
@@ -435,9 +534,9 @@ Page {
         Row {
             id:checkBoxs
             spacing: 25
-            anchors.top: arm.bottom
+            anchors.top: cl3.bottom
             anchors.topMargin: 20
-            anchors.left: arm.left
+            anchors.left: cl3.left
 
             CheckBox {
                 id:cb_lf
@@ -504,7 +603,7 @@ Page {
 
                 Column {
                     spacing: 10
-                    id: cl5
+                    id: cl6
 
 
                     Text {
@@ -530,153 +629,185 @@ Page {
 
                 Column {
                     spacing: 10
-                    anchors.bottom: cl5.bottom
+                    width: 80
+                    anchors.bottom: cl6.bottom
+
+                    Text {
+                        text: qsTr("   ")
+                    }
 
 
-                    TextField {
-                        height: 15
-                        width: 70
-                        font.pixelSize: 12
-                        horizontalAlignment: TextInput.AlignHCenter
-                        topPadding: 0
-                        bottomPadding: 0
-                        text: qsTr("3.5")
+                    Button {
                         objectName: "pospgain"
-                    }
-                    TextField {
                         height: 15
-                        width: 70
-                        font.pixelSize: 12
-                        horizontalAlignment: TextInput.AlignHCenter
-                        topPadding: 0
-                        bottomPadding: 0
-                        text: qsTr("3.5")
+                        width: parent.width
+                        text: pad.pospgain
+                        onClicked: {
+                            if(pad.visible == false) {
+                                pad.visible = true
+                                numPad.digits = ""
+                            }
+                            else pad.visible = false
+                            pad.target_ = "pospgain"
+                            pad.x = custaskgain.x
+                            pad.y = custaskgain.y + 150
+                        }
+                    }
+                    Button {
                         objectName: "posdgain"
-
-                    }
-                    TextField {
                         height: 15
-                        width: 70
-                        font.pixelSize: 12
-                        horizontalAlignment: TextInput.AlignHCenter
-                        topPadding: 0
-                        bottomPadding: 0
-                        text: qsTr("3.5")
+                        width: parent.width
+                        text: pad.posdgain
+                        onClicked: {
+                            if(pad.visible == false) {
+                                pad.visible = true
+                                numPad.digits = ""
+                            }
+                            else pad.visible = false
+                            pad.target_ = "posdgain"
+                            pad.x = custaskgain.x
+                            pad.y = custaskgain.y + 150
+                        }
+                    }
+                    Button {
                         objectName: "angpgain"
-
-                    }
-                    TextField {
                         height: 15
-                        width: 70
-                        font.pixelSize: 12
-                        horizontalAlignment: TextInput.AlignHCenter
-                        topPadding: 0
-                        bottomPadding: 0
-                        text: qsTr("3.5")
+                        width: parent.width
+                        text: pad.angpgain
+                        onClicked: {
+                            if(pad.visible == false) {
+                                pad.visible = true
+                                numPad.digits = ""
+                            }
+                            else pad.visible = false
+                            pad.target_ = "angpgain"
+                            pad.x = custaskgain.x
+                            pad.y = custaskgain.y + 150
+                        }
+                    }
+                    Button {
                         objectName: "angdgain"
-
-                    }
-                    TextField {
                         height: 15
-                        width: 70
-                        font.pixelSize: 12
-                        horizontalAlignment: TextInput.AlignHCenter
-                        topPadding: 0
-                        bottomPadding: 0
-                        text: qsTr("3.5")
-                         objectName: "accgain"
-
+                        width: parent.width
+                        text: pad.angdgain
+                        onClicked: {
+                            if(pad.visible == false) {
+                                pad.visible = true
+                                numPad.digits = ""
+                            }
+                            else pad.visible = false
+                            pad.target_ = "angdgain"
+                            pad.x = custaskgain.x
+                            pad.y = custaskgain.y + 150
+                        }
                     }
+                    Button {
+                        objectName: "accgain"
+                        height: 15
+                        width: parent.width
+                        text: pad.accgain
+                        onClicked: {
+                            if(pad.visible == false) {
+                                pad.visible = true
+                                numPad.digits = ""
+                            }
+                            else pad.visible = false
+                            pad.target_ = "accgain"
+                            pad.x = custaskgain.x
+                            pad.y = custaskgain.y + 150
+                        }
+                    }
+
                 }
             }
 
         }
 
-        Column {
-            spacing: 1
-            anchors.bottom: column3.bottom
-            anchors.left: column3.right
-            anchors.leftMargin: 10
+//        Column {
+//            spacing: 1
+//            anchors.bottom: column3.bottom
+//            anchors.left: column3.right
+//            anchors.leftMargin: 10
 
-            Slider {
-                id: horizontalSlider_1
-                objectName: "horizontalSlider_1"
-                width: 300
-                height: 20
-                stepSize: 1
-                to: 99
-                from: 0
-                value: 50
-                onValueChanged: ros.slidervelcommand(valueAt(position), valueAt(horizontalSlider_2.position), valueAt(horizontalSlider_3.position), horizontalSlider_4.valueAt(horizontalSlider_4.position))
-                onPressedChanged: value = 50
+//            Slider {
+//                id: horizontalSlider_1
+//                objectName: "horizontalSlider_1"
+//                width: 300
+//                height: 20
+//                stepSize: 1
+//                to: 99
+//                from: 0
+//                value: 50
+//                onValueChanged: ros.slidervelcommand(valueAt(position), valueAt(horizontalSlider_2.position), valueAt(horizontalSlider_3.position), horizontalSlider_4.valueAt(horizontalSlider_4.position))
+//                onPressedChanged: value = 50
 
-            }
+//            }
 
-            Slider {
-                id: horizontalSlider_2
-                objectName: "horizontalSlider_2"
-                width: 300
-                height: 20
-                stepSize: 1
-                to: 99
-                from: 0
-                value: 50
-                onValueChanged: ros.slidervelcommand(valueAt(horizontalSlider_1.position), valueAt(position), valueAt(horizontalSlider_3.position), horizontalSlider_4.valueAt(horizontalSlider_4.position))
-                onPressedChanged: value = 50
+//            Slider {
+//                id: horizontalSlider_2
+//                objectName: "horizontalSlider_2"
+//                width: 300
+//                height: 20
+//                stepSize: 1
+//                to: 99
+//                from: 0
+//                value: 50
+//                onValueChanged: ros.slidervelcommand(valueAt(horizontalSlider_1.position), valueAt(position), valueAt(horizontalSlider_3.position), horizontalSlider_4.valueAt(horizontalSlider_4.position))
+//                onPressedChanged: value = 50
 
-            }
+//            }
 
-            Slider {
-                id: horizontalSlider_3
-                objectName: "horizontalSlider_3"
-                width: 300
-                height: 20
-                stepSize: 1
-                to: 99
-                from: 0
-                value: 50
-                onValueChanged: ros.slidervelcommand(valueAt(horizontalSlider_1.position), valueAt(horizontalSlider_2.position), valueAt(position), horizontalSlider_4.valueAt(horizontalSlider_4.position))
-                onPressedChanged: value = 50
-
-
-            }
-        }
-
-        Column {
-            spacing: 1
-            id: column3
-            anchors.left: parent.left
-            anchors.top: checkBoxs.bottom
-            anchors.topMargin: 20
+//            Slider {
+//                id: horizontalSlider_3
+//                objectName: "horizontalSlider_3"
+//                width: 300
+//                height: 20
+//                stepSize: 1
+//                to: 99
+//                from: 0
+//                value: 50
+//                onValueChanged: ros.slidervelcommand(valueAt(horizontalSlider_1.position), valueAt(horizontalSlider_2.position), valueAt(position), horizontalSlider_4.valueAt(horizontalSlider_4.position))
+//                onPressedChanged: value = 50
 
 
-            Text {
-                id: text2
-                text: qsTr("deg")
-                font.pixelSize: 12
-            }
+//            }
+//        }
 
-            ComboBox {
-                id: comboBox
-                width: 100
-                height: 30
-                font.pixelSize: 12
-                model: ["COM pos", "Pelv Rot", "UpperBody Rotation",
-                    "Right Hand pos", "Right Hand rot", "Left Hand pos", "Left Hand rot"]
-                objectName: "comboBox"
-            }
+//        Column {
+//            spacing: 1
+//            id: column3
+//            anchors.left: parent.left
+//            anchors.top: checkBoxs.bottom
+//            anchors.topMargin: 20
 
-            Slider {
-                id: horizontalSlider_4
-                width: 100
-                height: 20
-                stepSize: 1
-                to: 20
-                from: 1
-                value: 1
-                objectName: "horizontalSlider_4"
-            }
-        }
+
+//            Text {
+//                id: text2
+//                text: qsTr("deg")
+//                font.pixelSize: 12
+//            }
+
+//            ComboBox {
+//                id: comboBox
+//                width: 150
+//                height: 30
+//                font.pixelSize: 12
+//                model: ["COM pos", "Pelv Rot", "UpperBody Rotation",
+//                    "Right Hand pos", "Right Hand rot", "Left Hand pos", "Left Hand rot"]
+//                objectName: "comboBox"
+//            }
+
+//            Slider {
+//                id: horizontalSlider_4
+//                width: 150
+//                height: 20
+//                stepSize: 1
+//                to: 20
+//                from: 1
+//                value: 1
+//                objectName: "horizontalSlider_4"
+//            }
+//        }
 
         Column {
             id: torquesolver
@@ -742,17 +873,35 @@ Page {
                     font.pixelSize: 12
                 }
 
-                TextField {
-                    height: 15
-                    width: 120
-                    text: qsTr("3.5")
+                Button {
                     objectName: "text_traj_time"
+                    height: 15
+                    width: 200
+                    text: pad.traj_time
+                    onClicked: {
+                        if(pad.visible == false) {
+                            pad.visible = true
+                            numPad.digits = ""
+                        }
+                        else pad.visible = false
+                        pad.target_ = "traj_time"
+                        pad.x = send.x + 100
+                        pad.y = send.y + 20
 
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
+                    }
                 }
+
+//                TextField {
+//                    height: 15
+//                    width: 200
+//                    text: qsTr("3.5")
+//                    objectName: "text_traj_time"
+
+//                    font.pixelSize: 12
+//                    horizontalAlignment: TextInput.AlignHCenter
+//                    topPadding: 0
+//                    bottomPadding: 0
+//                }
             }
 
             Row {
@@ -768,7 +917,7 @@ Page {
                 ComboBox {
                     id: task_mode
                     objectName: "task_mode"
-                    width: 120
+                    width: 200
                     height: 30
                     font.pixelSize: 12
                     model: ["0. COM pos", "1. COM pos + rot", "2. COM ,Upper", "3. Pelv,Upper",
@@ -783,7 +932,9 @@ Page {
                 id: button
                 width: 200
                 text: qsTr("SEND")
+                anchors.right: parent.right
                 font.pixelSize: 20
+                anchors.rightMargin: 0
                 onClicked: ros.tasksendcb()
             }
         }
@@ -817,165 +968,10 @@ Page {
                 onClicked: mymodel.append({"task_num": mymodel.count, "name": queName.text}) + ros.que_addquebtn()
             }
         }
+
     }
 
-    Frame {
 
-        id: frame2
-        width: 181
-        height: 501
-        anchors.left: frame1.right
-        anchors.leftMargin: 3
-        anchors.top: frame1.top
-        anchors.bottom: frame3.bottom
-
-        Column {
-            id: column1
-            spacing: 6
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.horizontalCenter:parent.horizontalCenter
-
-
-
-            Text {
-                id: text1
-                text: qsTr("Global Position")
-                font.pixelSize: 12
-            }
-
-            Button {
-                width: 150
-                height: 30
-                font.pixelSize: 12
-                text: qsTr("Init Yaw")
-                onClicked: {
-                    ros.button_ros(0,"inityaw")
-                }
-
-            }
-            Button {
-                text: qsTr("qdot Lpf")
-                width: 150
-                height: 30
-                font.pixelSize: 12
-                onClicked: {
-                    ros.button_ros(0,"enablelpf")                        }
-            }
-            Button {
-                text: qsTr("State Estimation")
-                width: 150
-                height: 30
-                font.pixelSize: 12
-                onClicked: {
-                    ros.button_ros(0,"stateestimation")
-                }
-            }
-            Button {
-                text: qsTr("SE by FT")
-                width: 150
-                height: 30
-                font.pixelSize: 12
-                onClicked: {
-                    ros.button_ros(0,"sebyft")
-                }
-            }
-            Button {
-                text: qsTr("virtual joint(sim)")
-                width: 150
-                height: 30
-                font.pixelSize: 12
-                onClicked: {
-                    ros.button_ros(0,"simvirtualjoint")
-                }
-            }
-            Button {
-                text: qsTr("Ignore IMU")
-                width: 150
-                height: 30
-                font.pixelSize: 12
-                onClicked: {
-                    ros.button_ros(0,"imuignore")
-                }
-            }
-
-            Text {
-                text: qsTr("Robot Control")
-
-                font.pixelSize: 12
-            }
-
-            Button {
-                text: qsTr("GravityControl")
-                width: 150
-                height: 30
-                font.pixelSize: 12
-                onClicked: {
-                    ros.button_ros(0,"gravity")
-                }
-            }
-            Button {
-                text: qsTr("PositionControl")
-                width: 150
-                height: 30
-                font.pixelSize: 12
-                onClicked: {
-                    ros.button_ros(0,"positioncontrol")
-                }
-            }
-            Button {
-                text: qsTr("Position(Grav))")
-                width: 150
-                height: 30
-                font.pixelSize: 12
-                onClicked: {
-                    ros.button_ros(0,"positiongravcontrol")
-                }
-            }
-            Button {
-                text: qsTr("torqueredis")
-                width: 150
-                height: 30
-                font.pixelSize: 12
-                onClicked: {
-                    ros.button_ros(0,"torqueredis")
-                }
-            }
-
-
-
-
-            Text {
-                text: qsTr("Data")
-                font.pixelSize: 12
-            }
-
-            Button {
-                text: qsTr("help")
-                width: 150
-                height: 30
-                font.pixelSize: 12
-            }
-            Button {
-                text: qsTr("Print Data")
-                width: 150
-                height: 30
-                font.pixelSize: 12
-                onClicked: {
-                    ros.button_ros(0,"printdata")
-                }
-            }
-            Button {
-                text: qsTr("Show Data")
-                width: 150
-                height: 30
-                font.pixelSize: 12
-                onClicked: {
-                    ros.button_ros(0,"showdata")
-                }
-            }
-
-        }
-    }
 
     Frame {
         id: frame3
@@ -992,6 +988,8 @@ Page {
             anchors.top: parent.top
             text: qsTr("Walking Control")
             font.pixelSize: 12
+            anchors.leftMargin: -8
+            anchors.topMargin: -8
         }
 
         Row {
@@ -1041,57 +1039,91 @@ Page {
             Column {
                 spacing: 5
                 anchors.bottom: parent.bottom
+                width: 80
 
-                TextField {
-                    width: 60
-                    height: 15
-
-                    text: qsTr("0.5")
+                Text {
+                    text: qsTr("    ")
+                }
+                Button {
                     objectName: "text_walking_x"
-                    font.pixelSize: 12
-                    topPadding: 0
-                    bottomPadding: 0
-                }
-                TextField {
-                    width: 60
                     height: 15
-                    text: qsTr("0.0")
+                    width: parent.width
+                    text: pad.walking_x
+                    onClicked: {
+                        if(pad.visible == false) {
+                            pad.visible = true
+                            numPad.digits = ""
+                        }
+                        else pad.visible = false
+                        pad.target_ = "walking_x"
+                        pad.x = frame3.x + 150
+                        pad.y = frame3.y - 150
+                    }
+                }
+                Button {
                     objectName: "text_walking_y"
-                    font.pixelSize: 12
-                    topPadding: 0
-                    bottomPadding: 0
-                }
-                TextField {
-                    width: 60
                     height: 15
+                    width: parent.width
+                    text: pad.walking_y
+                    onClicked: {
+                        if(pad.visible == false) {
+                            pad.visible = true
+                            numPad.digits = ""
+                        }
+                        else pad.visible = false
+                        pad.target_ = "walking_y"
+                        pad.x = frame3.x + 150
+                        pad.y = frame3.y - 150
+                    }
+                }
+                Button {
                     objectName: "text_walking_z"
-                    text: qsTr("0.0")
-                    font.pixelSize: 12
-                    topPadding: 0
-                    bottomPadding: 0
-                }
-                TextField {
-                    width: 60
                     height: 15
+                    width: parent.width
+                    text: pad.walking_z
+                    onClicked: {
+                        if(pad.visible == false) {
+                            pad.visible = true
+                            numPad.digits = ""
+                        }
+                        else pad.visible = false
+                        pad.target_ = "walking_z"
+                        pad.x = frame3.x + 150
+                        pad.y = frame3.y - 150
+                    }
+                }
+                Button {
                     objectName: "text_walking_height"
-                    text: qsTr("0.0")
-                    font.pixelSize: 12
-                    topPadding: 0
-                    bottomPadding: 0
-                }
-                TextField {
-                    width: 60
                     height: 15
-                    objectName: "text_walking_theta"
-                    text: qsTr("0.0")
-                    font.pixelSize: 12
-                    topPadding: 0
-                    bottomPadding: 0
+                    width: parent.width
+                    text: pad.walking_height
+                    onClicked: {
+                        if(pad.visible == false) {
+                            pad.visible = true
+                            numPad.digits = ""
+                        }
+                        else pad.visible = false
+                        pad.target_ = "walking_height"
+                        pad.x = frame3.x + 150
+                        pad.y = frame3.y - 150
+                    }
                 }
-
-
-
-
+                Button {
+                    objectName: "text_walking_theta"
+                    height: 15
+                    width: parent.width
+                    text: pad.walking_theta
+                    onClicked: {
+                        if(pad.visible == false) {
+                            pad.visible = true
+                            numPad.digits = ""
+                        }
+                        else pad.visible = false
+                        pad.target_ = "walking_theta"
+                        pad.x = frame3.x + 150
+                        pad.y = frame3.y - 150
+                    }
+                }
             }
         }
 
@@ -1104,6 +1136,10 @@ Page {
 
             Column {
                 spacing: 5
+                Text {
+                    text: qsTr("    ")
+                }
+
                 Text {
                     text: qsTr("step_length_x")
                     font.pixelSize: 12
@@ -1119,27 +1155,42 @@ Page {
             Column {
                 id: column
                 spacing: 5
+                width: 80
 
-                TextField {
-                    width: 60
-                    height: 15
-                    text: qsTr("0.1")
-                    objectName: "text_walking_steplengthx"
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
+                Text {
+                    text: qsTr("    ")
                 }
-
-                TextField {
-                    width: 60
+                Button {
+                    objectName: "text_walking_steplengthx"
                     height: 15
-                    text: qsTr("0.0")
+                    width: parent.width
+                    text: pad.walking_steplengthx
+                    onClicked: {
+                        if(pad.visible == false) {
+                            pad.visible = true
+                            numPad.digits = ""
+                        }
+                        else pad.visible = false
+                        pad.target_ = "walking_steplengthx"
+                        pad.x = frame3.x + 300
+                        pad.y = frame3.y - 150
+                    }
+                }
+                Button {
                     objectName: "text_walking_steplengthy"
-                    font.pixelSize: 12
-                    horizontalAlignment: TextInput.AlignHCenter
-                    topPadding: 0
-                    bottomPadding: 0
+                    height: 15
+                    width: parent.width
+                    text: pad.walking_steplengthy
+                    onClicked: {
+                        if(pad.visible == false) {
+                            pad.visible = true
+                            numPad.digits = ""
+                        }
+                        else pad.visible = false
+                        pad.target_ = "walking_steplengthy"
+                        pad.x = frame3.x + 300
+                        pad.y = frame3.y - 150
+                    }
                 }
 
             }
@@ -1244,7 +1295,6 @@ Page {
             height: 20
             text: qsTr("mom")
             font.pixelSize: 12
-
         }
 
         Column {
@@ -1273,7 +1323,7 @@ Page {
         height: 332
         anchors.right: parent.right
         anchors.rightMargin: 8
-        anchors.left: frame2.right
+        anchors.left: frame1.right
         anchors.leftMargin: 3
         anchors.top: parent.top
         anchors.topMargin: 8
@@ -1328,12 +1378,207 @@ Page {
             text: qsTr("Send")
             font.pixelSize: 12
             onClicked: ros.que_sendbtn()
-
         }
     }
 
+    Item {
+        id: pad
+        width: 400
+        height: 300
+        visible: false
 
+
+
+        property string l_x: "0"
+        property string l_y: "0"
+        property string l_z: "0"
+        property string l_roll: "0"
+        property string l_pitch: "0"
+        property string l_yaw: "0"
+        property string r_x: "0"
+        property string r_y: "0"
+        property string r_z: "0"
+        property string r_roll: "0"
+        property string r_pitch: "0"
+        property string r_yaw: "0"
+        property string com_roll: "0"
+        property string com_pos: "0"
+        property string com_pitch: "0"
+        property string com_yaw: "0"
+        property string com_height: "0"
+        property string pelv_pitch: "0"
+        property string pospgain: "0"
+        property string posdgain: "0"
+        property string angpgain: "0"
+        property string angdgain: "0"
+        property string accgain: "0"
+        property string walking_x: "0"
+        property string walking_y: "0"
+        property string walking_z: "0"
+        property string walking_height: "0"
+        property string walking_theta: "0"
+        property string traj_time: "0"
+        property string walking_steplengthx: "0"
+        property string walking_steplengthy: "0"
+
+
+
+        property string target_: ""
+        x: 345
+        y: 137
+
+
+
+
+        function appendDigit(digit)
+        {
+            if(target_ == "l_x")
+                l_x = digit;
+            if(target_ == "l_y")
+                l_y = digit;
+            if(target_ == "l_z")
+                l_z = digit;
+            if(target_ == "l_roll")
+                l_roll = digit;
+            if(target_ == "l_pitch")
+                l_pitch = digit;
+            if(target_ == "l_yaw")
+                l_yaw = digit;
+            if(target_ == "r_x")
+                r_x = digit;
+            if(target_ == "r_y")
+                r_y = digit;
+            if(target_ == "r_z")
+                r_z = digit;
+            if(target_ == "r_roll")
+                r_roll = digit;
+            if(target_ == "r_pitch")
+                r_pitch = digit;
+            if(target_ == "r_yaw")
+                r_yaw = digit;
+            if(target_ == "com_pos")
+                com_pos = digit;
+            if(target_ == "com_height")
+                com_height = digit;
+            if(target_ == "pelv_pitch")
+                pelv_pitch = digit;
+            if(target_ == "com_roll")
+                com_roll = digit;
+            if(target_ == "com_pitch")
+                com_pitch = digit;
+            if(target_ == "com_yaw")
+                 com_yaw = digit;
+            if(target_ == "pospgain")
+                 pospgain = digit;
+            if(target_ == "posdgain")
+                 posdgain = digit;
+            if(target_ == "angpgain")
+                 angpgain = digit;
+            if(target_ == "angdgain")
+                 angdgain = digit;
+            if(target_ == "accgain")
+                 accgain = digit;
+            if(target_ == "accgain")
+                 accgain = digit;
+            if(target_ == "walking_x")
+                 walking_x = digit;
+            if(target_ == "walking_y")
+                 walking_y = digit;
+            if(target_ == "walking_z")
+                 walking_z = digit;
+            if(target_ == "walking_height")
+                 walking_height = digit;
+            if(target_ == "walking_theta")
+                 walking_theta = digit;
+            if(target_ == "traj_time")
+                 traj_time = digit;
+            if(target_ == "walking_steplengthx")
+                 walking_steplengthx = digit;
+            if(target_ == "walking_steplengthy")
+                 walking_steplengthy = digit;
+
+
+        }
+
+        function clear()
+        {
+            if(target_ == "l_x")
+                l_x = 0;
+            if(target_ == "l_y")
+                l_y = 0;
+            if(target_ == "l_z")
+                l_z = 0;
+            if(target_ == "l_roll")
+                l_roll = 0;
+            if(target_ == "l_pitch")
+                l_pitch = 0;
+            if(target_ == "l_yaw")
+                l_yaw = 0;
+            if(target_ == "r_x")
+                r_x = 0;
+            if(target_ == "r_y")
+                r_y = 0;
+            if(target_ == "r_y")
+                r_z = 0;
+            if(target_ == "r_roll")
+                r_roll = 0;
+            if(target_ == "r_pitch")
+                r_pitch = 0;
+            if(target_ == "r_yaw")
+                r_yaw = 0;
+            if(target_ == "com_pos")
+                com_pos = 0;
+            if(target_ == "com_height")
+                com_height = 0;
+            if(target_ == "pelv_pitch")
+                pelv_pitch = 0;
+            if(target_ == "com_roll")
+                com_roll = 0;
+            if(target_ == "com_pitch")
+                com_pitch = 0;
+            if(target_ == "com_yaw")
+                 com_yaw = 0;
+            if(target_ == "pospgain")
+                 pospgain = 0;
+            if(target_ == "posdgain")
+                 posdgain = 0;
+            if(target_ == "angpgain")
+                 angpgain = 0;
+            if(target_ == "angdgain")
+                 angdgain = 0;
+            if(target_ == "accgain")
+                 accgain = 0;
+            if(target_ == "accgain")
+                 accgain = 0;
+            if(target_ == "walking_x")
+                 walking_x = 0;
+            if(target_ == "walking_y")
+                 walking_y = 0;
+            if(target_ == "walking_z")
+                 walking_z = 0;
+            if(target_ == "walking_height")
+                 walking_height = 0;
+            if(target_ == "walking_theta")
+                 walking_theta = 0;
+            if(target_ == "traj_time")
+                 traj_time = 0;
+            if(target_ == "walking_steplengthx")
+                 walking_steplengthx = 0;
+            if(target_ == "walking_steplengthy")
+                 walking_steplengthy = 0;
+        }
+
+        NumberPad { id: numPad; anchors.horizontalCenter: parent.horizontalCenter; anchors.verticalCenter: parent.verticalCenter; visible: true}
+    }
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -1343,6 +1588,6 @@ Page {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.25}
+    D{i:0;formeditorZoom:0.75}
 }
 ##^##*/

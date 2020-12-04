@@ -77,19 +77,19 @@ void ros_connect::tasksendcb()
 
         task_pub.publish(task_msg);
 
-        m_Q->findChild<QObject *>("text_l_x")->setProperty("text",0.0);
-        m_Q->findChild<QObject *>("text_l_y")->setProperty("text",0.0);
-        m_Q->findChild<QObject *>("text_l_z")->setProperty("text",0.0);
-        m_Q->findChild<QObject *>("text_l_roll")->setProperty("text",0.0);
-        m_Q->findChild<QObject *>("text_l_pitch")->setProperty("text",0.0);
-        m_Q->findChild<QObject *>("text_l_yaw")->setProperty("text",0.0);
+        // m_Q->findChild<QObject *>("text_l_x")->setProperty("text",0.0);
+        // m_Q->findChild<QObject *>("text_l_y")->setProperty("text",0.0);
+        // m_Q->findChild<QObject *>("text_l_z")->setProperty("text",0.0);
+        // m_Q->findChild<QObject *>("text_l_roll")->setProperty("text",0.0);
+        // m_Q->findChild<QObject *>("text_l_pitch")->setProperty("text",0.0);
+        // m_Q->findChild<QObject *>("text_l_yaw")->setProperty("text",0.0);
 
-        m_Q->findChild<QObject *>("text_r_x")->setProperty("text",0.0);
-        m_Q->findChild<QObject *>("text_r_y")->setProperty("text",0.0);
-        m_Q->findChild<QObject *>("text_r_z")->setProperty("text",0.0);
-        m_Q->findChild<QObject *>("text_r_roll")->setProperty("text",0.0);
-        m_Q->findChild<QObject *>("text_r_pitch")->setProperty("text",0.0);
-        m_Q->findChild<QObject *>("text_r_yaw")->setProperty("text",0.0);
+        // m_Q->findChild<QObject *>("text_r_x")->setProperty("text",0.0);
+        // m_Q->findChild<QObject *>("text_r_y")->setProperty("text",0.0);
+        // m_Q->findChild<QObject *>("text_r_z")->setProperty("text",0.0);
+        // m_Q->findChild<QObject *>("text_r_roll")->setProperty("text",0.0);
+        // m_Q->findChild<QObject *>("text_r_pitch")->setProperty("text",0.0);
+        // m_Q->findChild<QObject *>("text_r_yaw")->setProperty("text",0.0);
 
 
     }
@@ -609,7 +609,7 @@ void ros_connect::handletaskmsg()
         task_msg.r_yaw = m_Q->findChild<QObject *>("text_r_yaw")->property("text").toString().toDouble();
 
         task_msg.time = m_Q->findChild<QObject *>("text_traj_time")->property("text").toString().toDouble();
-        task_msg.mode = m_Q->findChild<QObject *>("task_mode")->property("currentIndex").toInt(); 
+        task_msg.mode = m_Q->findChild<QObject *>("task_mode")->property("currentIndex").toInt();
 
         task_msg.customTaskGain =  m_Q->findChild<QObject *>("customtaskgain")->property("checked").toUInt();
 
@@ -915,52 +915,52 @@ void ros_connect::walkingstartbtncb()
 
     }
 
-    void ros_connect::slidervelcommand(float slider_val_1, float slider_val_2, float slider_val_3, float slider_val_4)
-    {
-        velcmd_msg.des_vel.resize(6);
-        int gui_selected = m_Q->findChild<QObject *>("comboBox")->property("currentIndex").toInt(); 
-        int start_index = 0;
-        if (gui_selected == 0)
-        {
-            velcmd_msg.task_link = 0;
-            start_index = 0;
-        }
-        else if (gui_selected == 1)
-        {
-            velcmd_msg.task_link = 0;
-            start_index = 3;
-        }
-        else if (gui_selected == 2)
-        {
-            velcmd_msg.task_link = 1;
-            start_index = 3;
-        }
-        else if (gui_selected == 3)
-        {
-            velcmd_msg.task_link = 2;
-            start_index = 0;
-        }
-        else if (gui_selected == 4)
-        {
-            velcmd_msg.task_link = 2;
-            start_index = 3;
-        }
-        else if (gui_selected == 5)
-        {
-            velcmd_msg.task_link = 3;
-            start_index = 0;
-        }
-        else if (gui_selected == 6)
-        {
-            velcmd_msg.task_link = 3;
-            start_index = 3;
-        }
+    // void ros_connect::slidervelcommand(float slider_val_1, float slider_val_2, float slider_val_3, float slider_val_4)
+    // {
+    //     velcmd_msg.des_vel.resize(6);
+    //     int gui_selected = m_Q->findChild<QObject *>("comboBox")->property("currentIndex").toInt(); 
+    //     int start_index = 0;
+    //     if (gui_selected == 0)
+    //     {
+    //         velcmd_msg.task_link = 0;
+    //         start_index = 0;
+    //     }
+    //     else if (gui_selected == 1)
+    //     {
+    //         velcmd_msg.task_link = 0;
+    //         start_index = 3;
+    //     }
+    //     else if (gui_selected == 2)
+    //     {
+    //         velcmd_msg.task_link = 1;
+    //         start_index = 3;
+    //     }
+    //     else if (gui_selected == 3)
+    //     {
+    //         velcmd_msg.task_link = 2;
+    //         start_index = 0;
+    //     }
+    //     else if (gui_selected == 4)
+    //     {
+    //         velcmd_msg.task_link = 2;
+    //         start_index = 3;
+    //     }
+    //     else if (gui_selected == 5)
+    //     {
+    //         velcmd_msg.task_link = 3;
+    //         start_index = 0;
+    //     }
+    //     else if (gui_selected == 6)
+    //     {
+    //         velcmd_msg.task_link = 3;
+    //         start_index = 3;
+    //     }
 
-        velcmd_msg.des_vel[start_index + 0] = (slider_val_1 - 50) / 200.0 * slider_val_4;
-        velcmd_msg.des_vel[start_index + 1] = (slider_val_2 - 50) / 200.0 * slider_val_4;
-        velcmd_msg.des_vel[start_index + 2] = (slider_val_3 - 50) / 200.0 * slider_val_4;
-        velcommand_pub.publish(velcmd_msg);
-    }
+    //     velcmd_msg.des_vel[start_index + 0] = (slider_val_1 - 50) / 200.0 * slider_val_4;
+    //     velcmd_msg.des_vel[start_index + 1] = (slider_val_2 - 50) / 200.0 * slider_val_4;
+    //     velcmd_msg.des_vel[start_index + 2] = (slider_val_3 - 50) / 200.0 * slider_val_4;
+    //     velcommand_pub.publish(velcmd_msg);
+    // }
 
 
 
