@@ -94,6 +94,8 @@ public:
 
     void handletaskmsg();
 
+    void pushed_msg(const std_msgs::Bool &msg);
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -122,6 +124,7 @@ public:
 
     ros::Publisher android_pub;
     ros::Subscriber android_sub;
+    ros::Subscriber ardu_sub;
     int JoyFlag = 0;
     int LTFlag = 0;
     int RTFlag = 0;

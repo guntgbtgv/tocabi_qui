@@ -29,6 +29,9 @@ ros_connect::ros_connect(QObject *parent, ros::NodeHandle &nh) : QObject(parent)
         android_pub = nh.advertise<tocabi_controller::TaskCommand>("/tocabi/taskcommand", 100);
         android_sub  =  nh.subscribe("/controller/android_command", 1 , &ros_connect::android_cb,this);
 
+        ardu_sub = nh.subscribe("/msgbyar", 1, &ros_connect::pushed_msg);
+        
+        
         char buf[128];
         char buf2[128];
 
@@ -971,4 +974,7 @@ float ros_connect::pp(float val){
     else{
         return val / 150.0;
     }
+}
+void ros_connect::pushed_msg(const std_msgs::Bool &msg){
+
 }
