@@ -1385,7 +1385,7 @@ Page {
         id: pad
         width: 400
         height: 300
-        visible: false
+        visible: true
 
 
 

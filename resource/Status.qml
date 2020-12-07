@@ -1045,4 +1045,12 @@ Page {
         font.pixelSize: 12
     }
 
+    Text {
+        x: 699
+        y: 36
+        text: qsTr("Text")
+        font.pixelSize: 12
+        objectName: "bool_"
+    }
+
 }

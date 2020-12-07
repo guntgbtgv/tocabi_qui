@@ -97,7 +97,7 @@ public:
 
     void handletaskmsg();
 
-    void pushed_msg(const std_msgs::Bool msg);
+    void pushed_msg(const std_msgs::Bool &msg);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
