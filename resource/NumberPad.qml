@@ -158,13 +158,17 @@ Rectangle {
 
     Grid {
         columns: 3
-        columnSpacing: 10
-        rowSpacing: 10
+        columnSpacing: 5
+        rowSpacing: 5
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: 0
+        anchors.bottomMargin: 12
 
 
         signal buttonPressed
+        y: 67
+
 
         Button { text: "7"; onClicked: digitPressed(text)}
         Button { text: "8"; onClicked: digitPressed(text)}
@@ -179,6 +183,8 @@ Rectangle {
         Button { text: "."; onClicked: digitPressed(text)}
         Button { text: "C"; onClicked: operatorPressed(text) }
     }
+    Button{ x: 20; y: 15; width: 310; height: 40;text: "close"; onClicked: pad.visible = false}
+
 
 }
 
