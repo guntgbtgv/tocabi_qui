@@ -29,7 +29,7 @@ ros_connect::ros_connect(QObject *parent, ros::NodeHandle &nh) : QObject(parent)
         android_pub = nh.advertise<tocabi_controller::TaskCommand>("/tocabi/taskcommand", 100);
         android_sub  =  nh.subscribe("/controller/android_command", 1 , &ros_connect::android_cb,this);
 
-        ardu_sub = nh.subscribe("/msgbyar", 1, &ros_connect::pushed_msg,this);
+        //ardu_sub = nh.subscribe("/msgbyar", 1, &ros_connect::pushed_msg,this);
         
         
         char buf[128];
@@ -975,8 +975,8 @@ float ros_connect::pp(float val){
         return val / 150.0;
     }
 }
-void ros_connect::pushed_msg(const std_msgs::Bool &msg){
+//void ros_connect::pushed_msg(const std_msgs::Bool &msg){
 
-    m_Q->findChild<QObject *>("bool_")->setProperty("text", msg.data);
+//    //m_Q->findChild<QObject *>("bool_")->setProperty("text", msg.data);
 
-}
+//}
